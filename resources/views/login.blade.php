@@ -9,8 +9,11 @@
 <body>
     <h1>書籍管理システム</h1>
     <h2>ログイン</h2>
-    ログインID：<input type="text" name="loginId">
-    パスワード：<input type="password" name="password">
+    <form action="/top.blade.php" method="post">
+    ユーザーID：<input type="text" name="userId" required>
+    パスワード：<input type="password" name="password" required>
     <input type="submit" value="ログイン">
+    <input type="reset" value="リセット">
+    </form>
 </body>
 </html>
