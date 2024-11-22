@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/topBottom.css"> <!-- CSSファイルをリンク -->
+    <link rel="stylesheet" href="{{ asset('css/topBottom.css') }}"> <!-- CSSファイルをリンク -->
     <title>書籍一覧</title>
     <style>
         table {
@@ -26,16 +26,17 @@
             border: none;
             border-radius: 3px;
             cursor: pointer;
-            text-decoration: none; /* リンクの下線を消す */
+            text-decoration: none;
         }
         .btn:hover {
-            background-color: #0056b3; /* ホバー時の色 */
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <a href="/logout">ログアウトする</a>
     <h1>書籍一覧</h1>
+
     @if ($user = Session::get('user', 0))
         <p>ID: {{ $user['id'] }}</p>
         <p>Name: {{ $user['name'] }}</p>
@@ -51,7 +52,7 @@
             <th scope="col">レビュー件数</th>
             <th scope="col">平均点</th>
             <th scope="col">画像</th>
-            <th scope="col">詳細</th> <!-- 詳細列を追加 -->
+            <th scope="col">詳細</th>
         </tr>
         @if ($books->isEmpty())
             <tr>
@@ -60,14 +61,14 @@
         @else
             @foreach ($books as $record)
                 <tr>
-                    <td>{{$record->book_name}}</td>
-                    <td>{{$record->author}}</td>
-                    <td>{{$record->publisher_name}}</td>
-                    <td>{{$record->review_count}}</td>
-                    <td>{{$record->avg_score}}</td>
+                    <td>{{ $record->book_name }}</td>
+                    <td>{{ $record->author }}</td>
+                    <td>{{ $record->publisher_name }}</td>
+                    <td>{{ $record->review_count }}</td>
+                    <td>{{ $record->avg_score }}</td>
                     <td>
                         @if ($record->image_url)
-                            <img src="{{$record->image_url}}" alt="{{$record->book_name}}の画像" style="width:50px;height:auto;">
+                            <img src="{{ $record->image_url }}" alt="{{ $record->book_name }}の画像" style="width:50px;height:auto;">
                         @else
                             画像なし
                         @endif

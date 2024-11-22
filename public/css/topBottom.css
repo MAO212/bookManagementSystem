@@ -1,6 +1,8 @@
 /* public/css/topBottom.css */
 body {
     background-repeat: repeat-y;
+    margin: 0;
+    padding: 0;
 }
 
 body::before {
@@ -13,7 +15,7 @@ body::before {
     background-image: url('/img/reading_cat.png');
     background-repeat: repeat-y;
     background-position: top;
-    z-index: 1;
+    z-index: -1;
 }
 
 body::after {
@@ -26,5 +28,5 @@ body::after {
     background-image: url('/img/reading_cat.png');
     background-repeat: repeat-y;
     background-position: bottom;
-    z-index: 1;
+    z-index: -1;
 }
