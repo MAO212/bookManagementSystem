@@ -6,6 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/topBottom.css') }}"> <!-- CSSファイルをリンク -->
     <title>レビュー登録</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 60px;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
     <a href="/logout">ログアウト</a>
@@ -26,7 +33,9 @@
                 <br>
                 <input type="hidden" name="book_id" value="{{ $book->id }}"> <!-- 書籍IDを隠しフィールドで渡す -->
                 <input type="submit" value="登録">
+                
     </form>
-    <a href="/index">一覧表示に戻る</a>
+    <br>
+    <a href="/index">書籍一覧に戻る</a>
 </body>
 </html>

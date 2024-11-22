@@ -23,7 +23,7 @@
         <button type="submit" class="btn">詳細ページに戻る</button>
     </form>
     <form action="/index" method="get">
-        <button type="submit" class="btn">一覧表示に戻る</button>
+        <button type="submit" class="btn">書籍一覧に戻る</button>
     </form>
 </body>
 </html>
