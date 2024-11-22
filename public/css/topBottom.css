@@ -30,3 +30,57 @@ body::after {
     z-index: -1;
     opacity: 0.25; /* 透明度を50％に設定 */
 }
+.fukidashi-01-08 {
+    position: relative;
+    width: fit-content;
+    padding: 24px 32px; /* 吹き出し全体のサイズを大きくする */
+    border: 4px solid #555555; /* 枠線を太くする */
+    background-color: whitesmoke; /* 背景色を淡いピンクに変更 */
+    font-size: 20px; /* テキストサイズを大きくする */
+    font-weight: bold; /* テキストを強調 */
+    border-radius: 12px; /* 角を丸くする */
+  }
+  .fukidashi-01-08::before {
+    content: "";
+    position: absolute;
+    top: 12px; /* 縁の影を広げる */
+    left: 12px; /* 縁の影を広げる */
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 4px solid #555555; /* 縁の枠線を太くする */
+    background-color: whitesmoke; /* 縁の背景色を調整 */
+    border-radius: 12px; /* 縁も角を丸く */
+  }
+  .fukidashi-01-08::after {
+    content: "";
+    position: absolute;
+    top: calc(100% + 20px); /* 吹き出し三角の位置を調整 */
+    right: 40%; /* 三角形の位置を右側に調整 */
+    z-index: -1;
+    width: 40px; /* 吹き出し三角の幅を大きく */
+    height: 6px; /* 吹き出し三角の高さを大きく */
+    transform: rotate(-50deg); /* 反転角度を維持 */
+    box-sizing: border-box;
+    background-color: #555555; /* 三角形の色を枠線色と同じに */
+    box-shadow: 0 4px 0 #FDEDEC, 0 -4px 0 #FDEDEC; /* 三角形の背景色も調整 */
+  }
+  /* 中央揃えのスタイル */
+  .page-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 横方向の中央揃え */
+    margin-top: 30px; /* 上部に30pxの空白を設定 */
+    height: calc(100vh - 30px); /* 全体の高さから30pxを引く */
+    margin-bottom: 0; /* 下部は空白なし */
+    padding: 0;
+}
+
+.page-center .fukidashi-01-08 {
+    margin: 0 auto; /* フキダシを中央揃え */
+}
+
+.page-center a {
+    text-align: center; /* ボタンも中央揃え */
+}

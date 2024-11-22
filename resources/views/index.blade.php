@@ -47,9 +47,11 @@
     <form action="/logout" method="get">
         <input type="submit" value="ログアウトする">
     </form>
-
-    <h1>書籍一覧</h1>
-
+    <br>
+    <div class="fukidashi-01-08">
+        <div>書籍一覧</div>
+    </div>
+    <br>
     @if ($user = Session::get('user', 0))
         <p>ID: {{ $user['id'] }}</p>
         <p>Name: {{ $user['name'] }}</p>
