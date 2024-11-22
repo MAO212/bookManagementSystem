@@ -50,7 +50,7 @@
 <body>
     {{-- {{dd($record);}} --}}
     <form action="/index" method="get">
-        <input type="submit" value="一覧に戻る">
+        <input type="submit" value="書籍一覧に戻る">
     </form>
     <br>
     <div class="fukidashi-01-08">
