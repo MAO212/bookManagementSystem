@@ -15,20 +15,46 @@
             margin: 60px;
             line-height: 1.6;
         }
+        .btn-custom {
+            background-color: #EAC7CC;
+            color: #333c5e;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #E6B6B6;
+        }
+        h1{
+            color: #333c5e;
+            background-color:white;
+            border-left: 20px solid #C58D98;
+            border-right: 20px solid #C58D98;
+            border-bottom: 2px solid #C58D98;
+        }
+        .btn-logout {
+            background-color: #B0C4DE;
+            color: white;
+            border: none;
+            font-size: 14px; /* サイズを小さく */
+            padding: 5px 10px; /* パディングを調整 */
+        }
+        .btn-logout:hover {
+            background-color: #E6B6B6;
+        }
     </style>
 </head>
 <body>
     @php
     $user = Session::get('user', 0)
     @endphp
-    <h1>ようこそ{{$user['name']}}さん</h1>
+    <h1>ようこそ、{{$user['name']}}さん</h1>
         <br>
-        <a href="/book_register" style="font-size: 20px;">書籍登録</a>
-        <br>
-        <a href="/index" style="font-size: 20px;">書籍の一覧表示</a>
+        <a href="/book_register" class="btn btn-custom" style="font-size: 18px;">書籍登録</a>
         <br>
         <br>
+        <a href="/index" class="btn btn-custom" style="font-size: 17px;">書籍の一覧表示</a>
         <br>
-        <a href="/logout">ログアウト</a>
+        <br>
+        <br>
+        <a href="/logout" class="btn btn-logout">ログアウト</a>
 </body>
 </html>
