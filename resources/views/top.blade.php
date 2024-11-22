@@ -23,12 +23,12 @@
     @endphp
     <h1>ようこそ{{$user['name']}}さん</h1>
         <br>
-        <a href="/book_register">書籍登録</a>
+        <a href="/book_register" style="font-size: 20px;">書籍登録</a>
         <br>
-        <a href="/index">図書の一覧表示</a>
+        <a href="/index" style="font-size: 20px;">書籍の一覧表示</a>
         <br>
         <br>
         <br>
-        <a href="/logout">ログアウトする</a>
+        <a href="/logout">ログアウト</a>
 </body>
 </html>
