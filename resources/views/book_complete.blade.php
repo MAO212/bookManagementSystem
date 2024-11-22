@@ -36,7 +36,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ $ISBM }}</td>
+                <td>{{ $isbn }}</td>
                 <td>{{ $book_name }}</td>
                 <td>{{ $author }}</td>
                 <td>{{ $publisher_name }}</td>

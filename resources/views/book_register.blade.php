@@ -16,7 +16,7 @@
         <h1>書籍登録</h1>
 
         <!-- ISBN入力フォーム -->
-        <form action="{{ route('search.book') }}" method="post" class="mb-4">
+        <form action="/search_book" method="post" class="mb-4">
             @csrf
             <div class="mb-3">
                 <label for="isbn" class="form-label">ISBNを入力してください:</label>
@@ -24,6 +24,7 @@
             </div>
             <button type="submit" class="btn btn-primary">検索</button>
         </form>
+
 
         @if(isset($bookData))
             <h2>書籍情報</h2>
@@ -76,5 +77,14 @@
     {{-- <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る">
     </form> --}}
+
+        <form action="/top" method="get">
+            <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
+        </form>
+    </div>
+    <form action="/logout" method="get">
+        <input type="submit" value="ログアウト">
+    </form>
+
 </body>
 </html>
