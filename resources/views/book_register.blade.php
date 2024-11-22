@@ -9,6 +9,10 @@
 </head>
 <body>
     <div class="container mt-5">
+        <form action="/logout" method="post">
+            <input type="submit" value="ログアウト">
+        </form>
+        <br>
         <h1>書籍登録</h1>
 
         <!-- ISBN入力フォーム -->
@@ -53,15 +57,7 @@
         @else
             <p>書籍が見つかりませんでした。</p>
         @endif
-
-        <form action="/top" method="get">
-            <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
-        </form>
-    </div>
-    <form action="/logout" method="post">
-        <input type="submit" value="ログアウト">
-    </form>
-    
+            <hr>
     <h1>書籍登録ページ</h1>
     
     <form action="/book_store" method="post">
@@ -72,8 +68,11 @@
         出版社名 <input type="text" name="publisher_name" required><br>
         価格 <input type="number" name="price" required><br>
         <input type="submit" value="登録">
+    </form> <br>
+    <form action="/top" method="get">
+        <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
     </form>
-
+</div>
     {{-- <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る">
     </form> --}}
