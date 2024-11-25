@@ -45,5 +45,6 @@ class BooksTableSeeder extends Seeder
             'img_link' => 'hogehgoe.img',
             'ISBM' => 'cccccccc'
         ]);
+        
     }
 }
