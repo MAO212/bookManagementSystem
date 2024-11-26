@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>書籍検索サイトの作成</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #232934;
+      color: #dea663;
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .slide h1, .slide h2, .slide p {
+      margin: 10px 0;
+    }
+
+    .slide h1 {
+      font-size: 2.5rem;
+      color: #dea663;
+    }
+
+    .slide h2 {
+      font-size: 1.8rem;
+      color: #bf8441;
+    }
+
+    .slide p {
+      font-size: 1.2rem;
+      color: #dea663;
+    }
+
+    .navigation {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .navigation button {
+      padding: 10px 20px;
+      background-color: #bf8441;
+      color: #1a151f;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .navigation button:hover {
+      background-color: #dea663;
+    }
+  </style>
+</head>
+<body>
+  <!-- スライド1: タイトル -->
+  <div class="slide" id="slide1">
+    <h1>書籍検索サイトの作成</h1>
+    <h2>職業訓練校グループ活動</h2>
+    <p>期間: 4日間</p>
+    <p>メンバー: IT初心者5名</p>
+  </div>
+
+  <!-- スライド2: 活動の流れ -->
+  <div class="slide" id="slide2" style="display: none;">
+    <h1>活動の流れ</h1>
+    <p>1. 仕様書（要件定義）の確認</p>
+    <p>2. 外部設計の実施</p>
+    <p>3. 内部設計の実施</p>
+    <p>4. コーディングとテスト</p>
+    <p>5. 完成と成果発表</p>
+  </div>
+
+  <!-- スライド3: 外部設計 -->
+  <div class="slide" id="slide3" style="display: none;">
+    <h1>外部設計で行ったこと</h1>
+    <p>1. 画面遷移図の作成</p>
+    <p>2. ER図の作成</p>
+    <p>3. UI設計</p>
+  </div>
+
+  <!-- スライド4: 内部設計 -->
+  <div class="slide" id="slide4" style="display: none;">
+    <h1>内部設計で行ったこと</h1>
+    <p>1. ディレクトリ構成の計画</p>
+    <p>2. データベース設計</p>
+    <p>3. コーディング方針</p>
+  </div>
+
+  <!-- スライド5: 完成後の学び -->
+  <div class="slide" id="slide5" style="display: none;">
+    <h1>完成後の学び</h1>
+    <p>1. チーム作業の重要性</p>
+    <p>2. 設計の重要性</p>
+    <p>3. Laravelの基礎知識</p>
+    <p>4. 改善点</p>
+  </div>
+
+  <!-- スライド6: 質疑応答 -->
+  <div class="slide" id="slide6" style="display: none;">
+    <h1>質疑応答</h1>
+    <p>外部設計の手順やチーム作業について質問はありますか？</p>
+  </div>
+
+  <!-- ナビゲーションボタン -->
+  <div class="navigation">
+    <button onclick="prevSlide()">前へ</button>
+    <button onclick="nextSlide()">次へ</button>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+
+    function showSlide(slideNumber) {
+      const slides = document.querySelectorAll('.slide');
+      slides.forEach((slide, index) => {
+        slide.style.display = (index + 1 === slideNumber) ? 'flex' : 'none';
+      });
+    }
+
+    function nextSlide() {
+      if (currentSlide < 6) {
+        currentSlide++;
+        showSlide(currentSlide);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        showSlide(currentSlide);
+      }
+    }
+
+    // 初期スライドを表示
+    showSlide(currentSlide);
+  </script>
+</body>
+</html>
