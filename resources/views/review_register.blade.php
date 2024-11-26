@@ -17,11 +17,11 @@
             <textarea name="post_content" id="post_content" rows="3" required></textarea>
         </div>
             <p>点数</p>
-                <input type="radio" name="reviewScore" value="1点">1点
-                <input type="radio" name="reviewScore" value="2点">2点
-                <input type="radio" name="reviewScore" value="3点">3点
-                <input type="radio" name="reviewScore" value="4点">4点
-                <input type="radio" name="reviewScore" value="5点">5点
+                <input type="radio" name="reviewScore" value="1点">☆1
+                <input type="radio" name="reviewScore" value="2点">☆2
+                <input type="radio" name="reviewScore" value="3点">☆3
+                <input type="radio" name="reviewScore" value="4点">☆4
+                <input type="radio" name="reviewScore" value="5点">☆5
                 <br>
                 <input type="submit" value="登録">
     </form>
