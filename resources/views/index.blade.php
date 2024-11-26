@@ -21,7 +21,15 @@
     </style>
 </head>
 <body>
+    <a href="/logout">ログアウトする</a>
     <h1>書籍一覧</h1>
+    @if ($user = Session::get('user', 0))
+        <p>ID: {{ $user['id'] }}</p>
+        <p>Name: {{ $user['name'] }}</p>
+    @else
+    <   p>No user found.</>
+    @endif
+
     <table class="table">
         <tr>
             <th scope="col">書籍名</th>
