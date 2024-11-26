@@ -1,0 +1,9 @@
+body {
+    background-image: url(public/img/reading_cat.png);
+    background-repeat: repeat-y;
+    background-position: top;
+
+    background-image: url(public/img/reading_cat.png);
+    background-repeat: repeat-y;
+    background-position: bottom;
+}
