@@ -24,10 +24,11 @@
             <td>{{$author}}</td>
             <td>{{$publisher_name}}</td>
             <td>{{$price}}</td>
+            <img src="{{ assset($img_link) }}" alt="書影">
         </tr>
     </table>
     <br>
-    <form action="/topPage" method="post">
+    <form action="/list" method="post">
         <input type="submit" value="Topページへ戻る">
     </form>
 </body>

@@ -22,6 +22,14 @@
             <input type="password" name="password" id="password" class="form-control" required>
             </div>
         <input type="submit" value="ログイン" class="btn btn-primary">
-    </form>
+
+
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
 </body>
 </html>
