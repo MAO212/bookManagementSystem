@@ -8,13 +8,13 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles.css"> <!-- CSSファイルをリンク -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- CSSファイルをリンク -->
 
 </head>
 <body>
     <h1>書籍管理システム</h1>
     <h2>ログイン</h2>
-    <form action="/top.blade.php" method="post">
+    <form action="/login" method="post">
         @csrf
         <div class="bm-3">
         <label for="userId" class="form-label">ユーザID</label>
