@@ -18,6 +18,18 @@
         th {
             background-color: #f2f2f2;
         }
+        .btn {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none; /* リンクの下線を消す */
+        }
+        .btn:hover {
+            background-color: #0056b3; /* ホバー時の色 */
+        }
     </style>
 </head>
 <body>
@@ -27,7 +39,7 @@
         <p>ID: {{ $user['id'] }}</p>
         <p>Name: {{ $user['name'] }}</p>
     @else
-    <   p>No user found.</>
+        <p>No user found.</p>
     @endif
 
     <table class="table">
@@ -38,10 +50,11 @@
             <th scope="col">レビュー件数</th>
             <th scope="col">平均点</th>
             <th scope="col">画像</th>
+            <th scope="col">詳細</th> <!-- 詳細列を追加 -->
         </tr>
         @if ($books->isEmpty())
             <tr>
-                <td colspan="6">書籍が見つかりませんでした。</td>
+                <td colspan="7">書籍が見つかりませんでした。</td>
             </tr>
         @else
             @foreach ($books as $record)
@@ -57,6 +70,12 @@
                         @else
                             画像なし
                         @endif
+                    </td>
+                    <td>
+                        <form action="detail">
+                            <input type="hidden" name="id" value="{{ $record->id }}">
+                            <button type="submit" class="btn">詳細</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
