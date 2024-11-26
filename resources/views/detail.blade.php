@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>書籍詳細ページ</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -18,6 +26,22 @@
         }
         th {
             background-color: #f2f2f2;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 10px;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .success-message {
+            color: green;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -37,18 +61,24 @@
             <th>平均点</th>
         </tr>
         <tr>
-            <td>{{$record->isbn}}</td>
-            <td>{{$record->book_name}}</td>
-            <td>{{$record->author}}</td>
-            <td>{{$record->publisher_name}}</td>
-            <td>{{$record->price}}</td>
-            <td><img src="{{$record->img_link}}" alt="書籍画像" style="max-width: 100px;"></td>
-            <td>{{$record->review_count}}</td>
-            <td>{{$record->avg_score}}</td>
+            <td>{{ $record->isbn }}</td>
+            <td>{{ $record->book_name }}</td>
+            <td>{{ $record->author }}</td>
+            <td>{{ $record->publisher_name }}</td>
+            <td>{{ $record->price }}</td>
+            <td><img src="{{ $record->img_link }}" alt="書籍画像" style="max-width: 100px;"></td>
+            <td>{{ $record->review_count }}</td>
+            <td>{{ $record->avg_score }}</td>
         </tr>
     </table>
 
     <h2>レビュー一覧</h2>
+    @if (session('success'))
+        <div class="success-message">{{ session('success') }}</div>
+    @endif
+
+    <a href="/review_register" class="btn">レビューを投稿する</a>
+
     <table>
         <tr>
             <th>レビュー者の名前</th>
@@ -57,9 +87,9 @@
         </tr>
         @foreach ($record->reviews as $review)
             <tr>
-                <td>{{$review->employee->name}}</td>
-                <td>{{$review->post_content}}</td>
-                <td>{{$review->score}}</td>
+                <td>{{ $review->employee->name ?? '不明' }}</td>
+                <td>{{ $review->post_content }}</td>
+                <td>{{ $review->score }}</td>
             </tr>
         @endforeach
     </table>

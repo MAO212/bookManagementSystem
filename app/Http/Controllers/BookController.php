@@ -35,7 +35,7 @@ class BookController extends Controller
         if ($password === $user->pass) {
             // パスワードが正しい場合、ユーザー情報をセッションに保存
             Session::put('user', $user);
-            return redirect('index'); // トップページにリダイレクト
+            return redirect('top'); // トップページにリダイレクト
         }
 
         // 認証に失敗した場合
@@ -62,6 +62,21 @@ class BookController extends Controller
         }
 
         return view('detail', compact('record')); // 詳細ページにデータを渡す
+    }
+
+    public function review_register(Request $req)
+    {
+        $bookId = $req->input('book_id'); // 書籍IDを取得
+        return view('review_register', compact('bookId')); // ビューに渡す
+    }
+
+    public function top()
+    {
+        if (!session()->has('user')) {
+            return redirect('login');
+        }
+        
+        return view('top');
     }
     
 }

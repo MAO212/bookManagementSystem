@@ -7,6 +7,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/top', [BookController::class, 'top']);
 
 
 
@@ -20,4 +21,5 @@ Route::get('/logout', [BookController::class, 'logout']);
 
 Route::get('/detail', [BookController::class, 'detail']);
 
+Route::get('/review_register',[BookController::class, 'review_register']);
 
