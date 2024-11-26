@@ -16,5 +16,12 @@
         <input type="submit" value="ログイン">
         <input type="reset" value="リセット">
     </form>
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
 </body>
 </html>
