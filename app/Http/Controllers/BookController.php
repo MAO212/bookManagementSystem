@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book; // Bookモデルをインポート
-use App\Model\Employee; // Employeeモデルをインポート
+use App\Models\Employee; // Employeeモデルをインポート
 use App\Models\Review; // Reviewモデルをインポート
 
 class BookController extends Controller
@@ -25,13 +25,13 @@ class BookController extends Controller
         $password = $req->input('password');
 
         // ユーザーをデータベースから取得
-        $user = Employee::where('userId', $userId)->get();
+        $user = Employee::where('id', $userId)->first();
 
         // パスワードの確認
         if ($user && password_verify($password, $user->password)) {
             // パスワードが正しい場合、ユーザ情報をセッションに保存
             Session::put('user', $user);
-            return redirect()->intended('top'); // トップページにリダイレクト
+            return redirect()->intended('index'); // トップページにリダイレクト
         }
 
         // 認証に失敗した場合
