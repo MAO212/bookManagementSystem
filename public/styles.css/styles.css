@@ -15,7 +15,6 @@ body {
     border-radius: 10px; /* 角を丸くする */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 h1, h2 {
     color: #1E88E5; /* メインの青 */
 }
