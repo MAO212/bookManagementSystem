@@ -12,6 +12,9 @@ Route::post('/login', [BookController::class, 'login']);
 Route::get('/index', [BookController::class, 'index']);
 
 
+Route::get('/logout', [BookController::class, 'logout']);
+
+
 
 
 
