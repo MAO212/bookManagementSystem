@@ -55,10 +55,10 @@
             <th>レビュー本文</th>
             <th>点数</th>
         </tr>
-        @foreach ($reviews as $review)
+        @foreach ($record->reviews as $review)
             <tr>
-                <td>{{$review->name}}</td>
-                <td>{{$review->main}}</td>
+                <td>{{$review->employee->name}}</td>
+                <td>{{$review->post_content}}</td>
                 <td>{{$review->score}}</td>
             </tr>
         @endforeach

@@ -49,5 +49,19 @@ class BookController extends Controller
         Session::forget('user');
         return redirect('login'); // ログインページにリダイレクト
     }
+
+    public function detail(Request $req) 
+    {
+        $bookId = $req->input('id');
+        $record = Book::find($bookId); // IDに基づいて書籍を取得
+        $reviews = Book::with('reviews.employee')->find($bookId);
+        
+        // 書籍が見つからない場合は404エラーを返す
+        if (!$record) {
+            abort(404);
+        }
+
+        return view('detail', compact('record')); // 詳細ページにデータを渡す
+    }
     
 }
