@@ -21,5 +21,11 @@ Route::get('/logout', [BookController::class, 'logout']);
 
 Route::get('/detail', [BookController::class, 'detail']);
 
-Route::get('/review_register',[BookController::class, 'review_register']);
+Route::post('/review_register',[BookController::class, 'review_register']);
+Route::get('/review_register', [BookController::class, 'review_register'])->name('reviews.create');
+
+
+Route::post('/store', [BookController::class, 'store'])->name('reviews.store');
+
+Route::get('/review_complete', [BookController::class, 'review_complete'])->name('reviews.complete');
 

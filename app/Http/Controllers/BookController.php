@@ -67,16 +67,65 @@ class BookController extends Controller
     public function review_register(Request $req)
     {
         $bookId = $req->input('book_id'); // 書籍IDを取得
-        return view('review_register', compact('bookId')); // ビューに渡す
+        $book = Book::find($bookId); // 書籍情報を取得 (IDで検索)
+
+        // 書籍が見つからない場合の処理
+        if (!$book) {
+            abort(404); // 404エラーを返す
+        }
+
+        $user = session('user'); // セッションからユーザ情報を取得
+        $name = $user ? $user->name : 'ゲスト'; // ユーザー名を取得
+
+        return view('review_register', compact('book', 'name')); // ビューに渡す
     }
+
 
     public function top()
     {
         if (!session()->has('user')) {
             return redirect('login');
         }
-        
+
         return view('top');
     }
     
+    // レビューを保存
+    public function store(Request $req)
+    {
+        // バリデーション
+        $validateData = $req->validate([
+            'post_content' => 'required|string|max:500',
+            'reviewScore' => 'required|string',
+            'book_id' => 'required|exists:books,id', // 書籍IDがbooksテーブルに存在することを確認
+        ]);
+
+        // 新しいレビューを作成
+        $review = new Review();
+        $review->post_content = $validateData['post_content'];
+        $review->score = $validateData['reviewScore'];
+        $review->book_id = $validateData['book_id'];
+        $review->employee_id = Session::get('user')->id; // セッションからユーザIDを取得
+
+        // レビューを保存
+        $review->save();
+
+        // 成功メッセージをセッションに保存
+        return redirect()->route('reviews.complete')
+            ->with([
+                'name' => Session::get('user')->name, // 投稿者名
+                'post_content' => $review->post_content, // レビュー本文
+                'score' => $review->score // 点数
+            ]);
+    }
+
+    public function review_complete(Request $req) 
+    {
+        // セッションからデータを取得
+        $name = $req->session()->get('name');
+        $post_content = $req->session()->get('post_content');
+        $score = $req->session()->get('score');
+
+        return view('review_complete', compact('name','post_content','score'));
+    }
 }

@@ -76,8 +76,12 @@
     @if (session('success'))
         <div class="success-message">{{ session('success') }}</div>
     @endif
-
-    <a href="/review_register" class="btn">レビューを投稿する</a>
+    <!-- レビュー投稿フォーム -->
+    <form action="/review_register" method="post">
+        @csrf
+        <input type="hidden" name="book_id" value="{{ $record->id }}"> <!-- 書籍IDを隠しフィールドで渡す -->
+        <button type="submit" class="btn">レビューを投稿する</button>
+    </form>
 
     <table>
         <tr>
