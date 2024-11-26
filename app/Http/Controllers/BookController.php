@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Book; // Bookモデルをインポート
 use App\Models\Employee; // Employeeモデルをインポート
 use App\Models\Review; // Reviewモデルをインポート
+use Illuminate\Support\Facades\Session;
 
 class BookController extends Controller
 {
     public function index()
     {
+        if (!session()->has('user')) {
+            return redirect('login');
+        }
+        
         // データベースから書籍データを取得
         $books = Book::all(); // 全ての書籍を取得
 
@@ -26,12 +31,11 @@ class BookController extends Controller
 
         // ユーザーをデータベースから取得
         $user = Employee::where('id', $userId)->first();
-
         // パスワードの確認
-        if ($user && password_verify($password, $user->password)) {
-            // パスワードが正しい場合、ユーザ情報をセッションに保存
+        if ($password === $user->pass) {
+            // パスワードが正しい場合、ユーザー情報をセッションに保存
             Session::put('user', $user);
-            return redirect()->intended('index'); // トップページにリダイレクト
+            return redirect('index'); // トップページにリダイレクト
         }
 
         // 認証に失敗した場合
@@ -43,7 +47,21 @@ class BookController extends Controller
     {
         // セッションからユーザ情報を削除
         Session::forget('user');
-        return redirect('/login'); // ログインページにリダイレクト
+        return redirect('login'); // ログインページにリダイレクト
+    }
+
+    public function detail(Request $req) 
+    {
+        $bookId = $req->input('id');
+        $record = Book::find($bookId); // IDに基づいて書籍を取得
+        $reviews = Book::with('reviews.employee')->find($bookId);
+        
+        // 書籍が見つからない場合は404エラーを返す
+        if (!$record) {
+            abort(404);
+        }
+
+        return view('detail', compact('record')); // 詳細ページにデータを渡す
     }
     
 }
