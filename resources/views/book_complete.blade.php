@@ -18,6 +18,7 @@
     <h1>以下のデータを登録しました</h1>
 
     <table class="table">
+
         <thead>
             <tr>
                 <th>ISBN</th>
@@ -41,8 +42,7 @@
     </table>
 
     <br>
-    <form action="/list" method="post">
-        @csrf
+    <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る">
     </form>
 </body>

@@ -27,3 +27,6 @@ Route::post('/store', [BookController::class, 'store'])->name('reviews.store');
 Route::get('/review_complete', [BookController::class, 'review_complete'])->name('reviews.complete');
 
 Route::get('/book_register', [BookController::class, 'book_register']);
+
+
+Route::post('/book_store', [BookController::class, 'book_store']);
