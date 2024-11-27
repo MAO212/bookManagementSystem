@@ -1,80 +1,91 @@
+/* 基本設定 */
 body {
-    background-color: #BBDEFB; /* 淡い青 */
-    font-family: Arial, sans-serif;
-
-    background-image: url(public/img/reading_cat.png);
-    background-repeat: repeat-y;
-    background-position: top;
-
-    background-image: url(public/img/reading_cat.png);
-    background-repeat: repeat-y;
-    background-position: bottom;
+  background: #CBC0D3;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
 }
-
-.login-container {
-    width: 400px;
-    padding: 40px 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff; /* 背景を白に */
-    text-align: center;
-    border-radius: 10px; /* 角を丸くする */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* コンテナ設定 */
+.container {
+  margin: auto;
+  width: 650px;
+  height: 550px;
+  position: relative;
 }
-h1, h2 {
-    color: #1E88E5; /* メインの青 */
+.welcome {
+  background: #F6F6F6;
+  width: 650px;
+  height: 415px;
+  position: absolute;
+  top: 25%;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, .1);
 }
-
-input[type="text"],
-input[type="password"] {
-    border: 2px solid #FFB74D; /* メインのオレンジ */
-    padding: 15px 10px;
-    width: 80%;
-    margin: 20px auto;
-    border-radius: 24px;
-    outline: none;
-    transition: 0.25s;
-    text-align: center;
+.pinkbox {
+  position: absolute;
+  top: -10%;
+  left: 5%;
+  background: #EAC7CC;
+  width: 320px;
+  height: 500px;
+  border-radius: 5px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, .1);
 }
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-    width: 90%;
-    background-color: #f0f8ff; /* 薄い青 */
+/* 見出し設定 */
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin-top: 50px;
+  text-transform: uppercase;
+  color: #F6F6F6;
+  font-size: 2em;
+  letter-spacing: 8px;
 }
-
-.button {
-    display: inline-block;
-    color: white;
-    width: 200px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 20px;
-    border-radius: 25px;
-    text-align: center;
-    font-weight: bold;
-    background-color: #FFB74D; /* メインのオレンジ */
-    text-decoration: none;
-    transition: background-color 0.25s;
+/* フォーム設定 */
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 7px;
 }
-
-.button:hover {
-    background-color: #F57C00; /* 深いオレンジ */
+input {
+  background: #EAC7CC;
+  width: 65%;
+  color: #B85C5C;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 9px;
+  margin: 7px;
 }
-
-.reset-button {
-    border: 2px solid #FFB74D; /* メインのオレンジ */
-    padding: 10px;
-    border-radius: 24px;
-    background: none;
-    color: #1E88E5; /* メインの青 */
-    cursor: pointer;
-    transition: background-color 0.25s, color 0.25s;
+input::placeholder {
+  color: rgba(255, 255, 255, 1);
+  letter-spacing: 2px;
+  font-size: 1.3em;
 }
-
-.reset-button:hover {
-    background-color: #FFB74D; /* メインのオレンジ */
-    color: white;
+button {
+  padding: 12px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  border-radius: 10px;
+  margin: auto;
+  outline: none;
+  display: block;
+  background: #F6F6F6;
+  color: #B85C5C;
+  border: solid 1px #EAC7CC;
+  cursor: pointer;
+}
+button:hover {
+  background: #EAC7CC;
+  color: #F6F6F6;
+  transition: background-color 1s ease-out;
+}
+/* 追加した画像のスタイル */
+.signin-image {
+  display: block;
+  margin: 20px auto;
+  width: 100px;
+  height: auto;
+  opacity: 0.8;
 }
