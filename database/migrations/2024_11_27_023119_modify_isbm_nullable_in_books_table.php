@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->string('img_link')->default('img/default_image.jpg')->change(); 
+            // ISBMをNULL許可に変更
+            $table->string('ISBM')->nullable()->change();
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('books', function (Blueprint $table) {
-            
+            //
         });
     }
 };
