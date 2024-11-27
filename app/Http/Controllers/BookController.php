@@ -61,7 +61,9 @@ class BookController extends Controller
             abort(404);
         }
 
-        return view('detail', compact('record')); // 詳細ページにデータを渡す
+        $user = Session('user');
+
+        return view('detail', compact('record', 'reviews', 'user')); // 詳細ページにデータを渡す
     }
 
     public function review_register(Request $req)
@@ -77,7 +79,7 @@ class BookController extends Controller
         $user = session('user'); // セッションからユーザ情報を取得
         $name = $user ? $user->name : 'ゲスト'; // ユーザー名を取得
 
-        return view('review_register', compact('book', 'name')); // ビューに渡す
+        return view('review_register', compact('book', 'user')); // ビューに渡す
     }
 
 
@@ -155,5 +157,64 @@ class BookController extends Controller
         ];
 
         return view('book_complete', $data); // book_complete　ビューにリダイレクト
+    }
+
+    public function edit(Request $req)
+    {
+        // リクエスト時のmethodの種類を判別
+        if ($req->isMethod('get')) { // GET通信の場合
+            $id = $req->input('id'); // 修正対象データのIDを取得
+            $record = Review::find($id); // IDに基づいてレビューを取得
+
+            // レビューが見つからない場合は404エラーを返す
+            if (!$record) {
+                abort(404);
+            }
+
+            return view('review_update', compact('record')); // データを指定してビューを表示
+        } elseif ($req->isMethod('post')) { // POST通信の場合
+            $id = $req->input('id'); // 修正対象データのIDを取得
+
+            // IDに基づいてレビューを取得
+            $record = Review::find($id);
+
+            // レビューが見つからない場合は404エラーを返す
+            if (!$record) {
+                abort(404);
+            }
+
+            return view('review_update', compact('record')); // データを指定してビューを表示
+        } else { // GET/POST以外の場合
+            return redirect('/'); // Topページにリダイレクト
+        }
+    }
+
+    
+    public function update(Request $req)
+    {
+        // 修正対象のIDに該当するレコードを取得
+        $review = Review::find($req->id);
+
+        // レビューが見つからない場合は404エラーを返す
+        if (!$review) {
+            abort(404);
+        }
+
+        // フォームに入力されているデータをモデルに代入（上書き）
+        $review->post_content = $req['post_content'];
+        $review->score = $req['score'];
+
+        // モデルのデータをテーブルに保存（上書き）
+        $review->save();
+
+        $data = [
+            'post_content' => $req['post_content'],
+            'score' => $req['score'],
+            'name' => Session::get('user')->name
+        ];
+
+
+        // 更新完了後のメッセージやリダイレクト先を指定
+        return view('review_update_complete', $data);
     }
 }
