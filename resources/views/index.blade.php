@@ -40,7 +40,7 @@
     <form action="/logout" method="get">
         <input type="submit" value="ログアウトする">
     </form>
-    
+
     <h1>書籍一覧</h1>
 
     @if ($user = Session::get('user', 0))
@@ -70,8 +70,8 @@
                     <td>{{ $record->book_name }}</td>
                     <td>{{ $record->author }}</td>
                     <td>{{ $record->publisher_name }}</td>
-                    <td>{{ $record->review_count }}</td>
-                    <td>{{ $record->avg_score }}</td>
+                    <td>{{ $record->reviews_count }}</td>
+                    <td>{{ number_format($record->reviews_avg_score, 1) }}</td>
                     <td>
                         @if ($record->image_url)
                             <img src="{{ $record->image_url }}" alt="{{ $record->book_name }}の画像" style="width:50px;height:auto;">
