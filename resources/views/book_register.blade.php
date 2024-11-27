@@ -19,16 +19,15 @@
     
     <form action="/book_register" method="post">
         @csrf        
-        ISBN <input type="number" name="ISBM" required><br>
+        ISBN <input type="number" name="ISBM"><br>
         書籍名 <input type="text" name="book_name" required><br>
         著者名 <input type="text" name="author" required><br>
         出版社名 <input type="text" name="publisher_name" required><br>
         価格 <input type="number" name="price" required><br>
-        画像 <img src="{{ assset($img_link) }}" alt="書影">
         <input type="submit" value="登録">
     </form>
 
-    <form action="/topPage" method="post">
+    <form action="/" method="post">
         <input type="submit" value="Topページへ戻る">
     </form>
 </body>

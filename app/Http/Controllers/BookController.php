@@ -47,7 +47,7 @@ class BookController extends Controller
     {
         // セッションからユーザ情報を削除
         Session::forget('user');
-        return redirect('login'); // ログインページにリダイレクト
+        return redirect('/'); // ログインページにリダイレクト
     }
 
     public function detail(Request $req) 
@@ -127,5 +127,10 @@ class BookController extends Controller
         $score = $req->session()->get('score');
 
         return view('review_complete', compact('name','post_content','score'));
+    }
+
+    public function book_register()
+    {
+        return view('book_register');
     }
 }

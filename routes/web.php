@@ -3,14 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('login');
 });
 
 Route::get('/top', [BookController::class, 'top']);
-
-
-
 
 Route::post('/login', [BookController::class, 'login']);
 
@@ -29,3 +26,4 @@ Route::post('/store', [BookController::class, 'store'])->name('reviews.store');
 
 Route::get('/review_complete', [BookController::class, 'review_complete'])->name('reviews.complete');
 
+Route::get('/book_register', [BookController::class, 'book_register']);
