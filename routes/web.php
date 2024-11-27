@@ -35,7 +35,7 @@ Route::get('/book_register', [BookController::class, 'book_register']);
 Route::post('/search_book', [IsbnSinController::class, 'searchBook'])->name('search.book');
 
 // 書籍登録
-Route::post('/book_register', [BookController::class, 'register'])->name('book.register');
+Route::post('/book_register', [BookController::class, 'register']);
 
 // 書籍登録完了ページ
 Route::get('/book_complete', function () {

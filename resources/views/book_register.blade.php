@@ -41,7 +41,7 @@
                 @endif
             </p>
 
-            <form action="{{ route('book.register') }}" method="post">
+            <form action="book_register" method="post">
                 @csrf
                 <input type="hidden" name="ISBN" value="{{ $bookData['industryIdentifiers'][0]['identifier'] ?? '' }}">
                 <input type="hidden" name="book_name" value="{{ $bookData['title'] }}">
