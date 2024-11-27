@@ -34,7 +34,13 @@
     </style>
 </head>
 <body>
-    <a href="/logout">ログアウトする</a>
+    <form action="/top" method="get">
+        <input type="submit" value="Topページへ戻る">
+    </form>
+    <form action="/logout" method="get">
+        <input type="submit" value="ログアウトする">
+    </form>
+    
     <h1>書籍一覧</h1>
 
     @if ($user = Session::get('user', 0))

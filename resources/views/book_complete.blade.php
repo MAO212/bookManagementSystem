@@ -36,7 +36,13 @@
                 <td>{{ $author }}</td>
                 <td>{{ $publisher_name }}</td>
                 <td>{{ $price }}</td>
-                <td><img src="{{ asset($img_link) }}" alt="書影" style="max-height: 150px;"></td>
+                <td>
+                @if ($img_link)
+                    <td><img src="{{ asset($img_link) }}" style="max-height: 150px;"></td>
+                @else
+                    <img src="img/default_image.jpg" style="width:50px;height:auto">
+                @endif
+                </td>
             </tr>
         </tbody>
     </table>

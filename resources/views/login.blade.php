@@ -19,9 +19,10 @@
           <h1>sign in</h1>
           <!-- 追加した画像 -->
           <img class="signin-image" src="/img/bookCat.png" />
-          <form class="more-padding" autocomplete="off">
-            <input type="text" placeholder="username">
-            <input type="password" placeholder="password">
+          <form action="/login" method="post" class="more-padding" autocomplete="off">
+            @csrf
+            <input type="text" name="userId" placeholder="username">
+            <input type="password" name="password" placeholder="password">
             <button class="button submit">ログイン</button>
           </form>
         </div>
