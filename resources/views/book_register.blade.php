@@ -3,14 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/topBottom.css"> <!-- CSSファイルをリンク -->
+    <link rel="stylesheet" href="css/topBottom.css">
     <title>書籍登録</title>
-    {{-- Bootstrap用各種ファイルをCDNから読み込み --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="container mt-5">
+        <h1>書籍情報</h1>
+
+        <!-- ISBN入力フォーム -->
+        <form action="{{ route('search.book') }}" method="post" class="mb-4">
+            @csrf
+            <div class="mb-3">
+                <label for="isbn" class="form-label">ISBNを入力してください:</label>
+                <input type="text" name="isbn" id="isbn" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">検索</button>
+        </form>
+
+        @if(isset($bookData))
+            <h2>書籍情報</h2>
+            <p>書籍名: {{ $bookData['title'] }}</p>
+            <p>著者名: 
+                @if(isset($bookData['authors']))
+                    {{ implode(', ', $bookData['authors']) }}
+                @else
+                    不明
+                @endif
+            </p>
+            <p>出版社名: {{ $bookData['publisher'] ?? '不明' }}</p>
+            <p>価格: {{ isset($bookData['price']) ? $bookData['price'] : '不明' }}</p>
+            <p>
+                @if(isset($bookData['imageLinks']['thumbnail']))
+                    <img src="{{ $bookData['imageLinks']['thumbnail'] }}" alt="書籍画像" style="max-width: 100px;">
+                @else
+                    <p>画像はありません</p>
+                @endif
+            </p>
+
+            <form action="{{ route('book.register') }}" method="post">
+                @csrf
+                <input type="hidden" name="ISBN" value="{{ $bookData['industryIdentifiers'][0]['identifier'] ?? '' }}">
+                <input type="hidden" name="book_name" value="{{ $bookData['title'] }}">
+                <input type="hidden" name="author" value="{{ isset($bookData['authors']) ? implode(', ', (array)$bookData['authors']) : '' }}">
+                <input type="hidden" name="publisher_name" value="{{ $bookData['publisher'] ?? '' }}">
+                <input type="hidden" name="price" value="{{ isset($bookData['price']) ? $bookData['price'] : '' }}">
+                <input type="submit" value="登録する" class="btn btn-primary">
+            </form>
+        @else
+            <p>書籍が見つかりませんでした。</p>
+        @endif
+
+        <form action="/" method="post">
+            <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
+        </form>
+    </div>
     <form action="/logout" method="post">
         <input type="submit" value="ログアウト">
     </form>

@@ -10,6 +10,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
 <body>
+<h1>書籍登録完了</h1>
+    <p>書籍が正常に登録されました。</p>
+    <form action="/" method="post">
+        <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
+
     <form action="/logout" method="post">
         @csrf
         <input type="submit" value="ログアウト">
