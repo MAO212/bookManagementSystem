@@ -13,8 +13,11 @@
             <input type="submit" value="ログアウト">
         </form>
         <br>
-        <h1>書籍登録</h1>
-
+        <div class="fukidashi-01-08">
+            <div>書籍登録</div>
+        </div>
+        <br>
+        <br>
         <!-- ISBN入力フォーム -->
         <form action="/search_book" method="post" class="mb-4">
             @csrf
@@ -24,6 +27,9 @@
             </div>
             <button type="submit" class="btn btn-primary">検索</button>
         </form>
+        @if (session('error_message'))
+            <div class="error-message">{{ session('error_message') }}</div>
+        @endif
 
 
         @if(isset($bookData))

@@ -25,10 +25,6 @@
         }
         h1{
             color: #333c5e;
-            background-color:white;
-            border-left: 20px solid #C58D98;
-            border-right: 20px solid #C58D98;
-            border-bottom: 2px solid #C58D98;
         }
         .btn-logout {
             background-color: #B0C4DE;
@@ -38,7 +34,7 @@
             padding: 5px 10px; /* パディングを調整 */
         }
         .btn-logout:hover {
-            background-color: #E6B6B6;
+            background-color: #ADCDEC;
         }
         /* 画像を画面右下に配置するスタイル */
         .bottom-right-img {
@@ -51,14 +47,16 @@
         }
     </style>
 </head>
-<body>
+<body class="page-center">
     @php
     $user = Session::get('user', 0)
     @endphp
-    <h1>ようこそ、{{$user['name']}}さん</h1>
+    <div class="fukidashi-01-08">
+        <div>ようこそ、{{$user['name']}}さん</div>
+    </div>
+        <br>
         <br>
         <a href="/book_register" class="btn btn-custom" style="font-size: 18px;">書籍登録</a>
-        <br>
         <br>
         <a href="/index" class="btn btn-custom" style="font-size: 17px;">書籍の一覧表示</a>
         <br>

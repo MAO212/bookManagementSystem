@@ -56,6 +56,7 @@ class BookController extends Controller
         $record = Book::withCount('reviews')->withAvg('reviews','score')->findOrFail($bookId);
         $reviews = Book::with('reviews.employee')->find($bookId);
         
+        // dd($record);
         // 書籍が見つからない場合は404エラーを返す
         if (!$record) {
             abort(404);
@@ -151,6 +152,7 @@ class BookController extends Controller
         $book_data->author = $request->author;
         $book_data->publisher_name = $request->publisher_name;
         $book_data->price = $request->price;
+        $book_data->img_link = "https://ndlsearch.ndl.go.jp/thumbnail/$request->isbn.jpg";
 
 
         // dd($book_data);
@@ -161,6 +163,7 @@ class BookController extends Controller
             $book_data->save(); // 画像がある場合は適宜修正
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() == 23000) { // ユニーク制約違反
+                Session::flash('error_message', '既に登録されています');
                 return view('book_register');
             }
             // その他のエラー処理

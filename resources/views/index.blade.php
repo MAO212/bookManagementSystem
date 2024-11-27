@@ -47,9 +47,11 @@
     <form action="/logout" method="get">
         <input type="submit" value="ログアウトする">
     </form>
-
-    <h1>書籍一覧</h1>
-
+    <br>
+    <div class="fukidashi-01-08">
+        <div>書籍一覧</div>
+    </div>
+    <br>
     @if ($user = Session::get('user', 0))
         <p>ID: {{ $user['id'] }}</p>
         <p>Name: {{ $user['name'] }}</p>
@@ -80,8 +82,8 @@
                     <td>{{ $record->reviews_count }}　件</td>
                     <td>☆{{ number_format($record->reviews_avg_score, 1) }}</td>
                     <td>
-                        @if ($record->image_url)
-                            <img src="{{ $record->image_url }}" alt="{{ $record->book_name }}の画像" style="width:50px;height:auto;">
+                        @if ($record->img_link)
+                            <img src="{{ $record->img_link }}" alt="{{ $record->book_name }}の画像" style="width:50px;height:auto;">
                         @else
                             <img src="img/default_image.jpg" style="width:50px;height:auto">
                         @endif
