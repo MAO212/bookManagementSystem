@@ -24,6 +24,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
+            background-color: white;
         }
         th {
             background-color: #f2f2f2;
