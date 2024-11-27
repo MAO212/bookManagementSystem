@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1>書籍情報</h1>
+        <h1>書籍登録</h1>
 
         <!-- ISBN入力フォーム -->
         <form action="{{ route('search.book') }}" method="post" class="mb-4">
@@ -24,7 +24,7 @@
         @if(isset($bookData))
             <h2>書籍情報</h2>
             <p>書籍名: {{ $bookData['title'] }}</p>
-            <p>著者名: 
+            <p>著者名:
                 @if(isset($bookData['authors']))
                     {{ implode(', ', $bookData['authors']) }}
                 @else
