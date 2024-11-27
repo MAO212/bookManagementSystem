@@ -89,13 +89,23 @@
             <th>レビュー者の名前</th>
             <th>レビュー本文</th>
             <th>点数</th>
+            <th>編集</th>
         </tr>
         @foreach ($record->reviews as $review)
             <tr>
                 <td>{{ $review->employee->name ?? '不明' }}</td>
                 <td>{{ $review->post_content }}</td>
                 <td>{{ $review->score }}</td>
+                <td>
+                    @if ($review->employee_id == $user->id)
+                    <form action="/edit" method="get">
+                        <input type="hidden" name="id" value="{{ $review->id }}">
+                        <button type="submit" class="btn">編集</button>
+                    </form>
+                    @endif
+                </td>
             </tr>
+            
         @endforeach
     </table>
 </body>

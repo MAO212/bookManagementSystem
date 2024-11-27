@@ -30,3 +30,9 @@ Route::get('/book_register', [BookController::class, 'book_register']);
 
 
 Route::post('/book_store', [BookController::class, 'book_store']);
+
+Route::post('/edit', [BookController::class, 'edit']);
+
+Route::get('/edit', [BookController::class, 'edit']);
+
+Route::post('/update', [BookController::class, 'update']);

@@ -11,18 +11,18 @@
     @if (isset($record))
     <form action="/update" method="post">
         @csrf
-        <input type="hidden" name="id" value={{$record->id}}><br>
+        <input type="hidden" name="id" value="{{$record->id}}"><br>
         投稿済みレビュー番号{{$record->id}} <br>
-        投稿者名 <input type="text" name="name" value="{{$record->name}}">
-        レビュー本文 <textarea name="posted_item">{{$record->posted_item}}</textarea>
-        レビュー点数 
-                <input type="radio" name="reviewScore" value="★☆☆☆☆">★☆☆☆☆
-                <input type="radio" name="reviewScore" value="★★☆☆☆">★★☆☆☆
-                <input type="radio" name="reviewScore" value="★★★☆☆">★★★☆☆
-                <input type="radio" name="reviewScore" value="★★★★☆">★★★★☆
-                <input type="radio" name="reviewScore" value="★★★★★">★★★★★
+        レビュー本文 <textarea name="post_content">{{$record->post_content}}</textarea><br>
+        レビュー点数 <br>
+                <input type="radio" name="score" value="1" checked>★☆☆☆☆<br>
+                <input type="radio" name="score" value="2">★★☆☆☆<br>
+                <input type="radio" name="score" value="3">★★★☆☆<br>
+                <input type="radio" name="score" value="4">★★★★☆<br>
+                <input type="radio" name="score" value="5">★★★★★<br>
                 <br>
                 <input type="submit" value="更新">
     </form>
+    @endif
 </body>
 </html>
