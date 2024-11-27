@@ -117,7 +117,8 @@ class BookController extends Controller
             ->with([
                 'name' => Session::get('user')->name, // 投稿者名
                 'post_content' => $review->post_content, // レビュー本文
-                'score' => $review->score // 点数
+                'score' => $review->score, // 点数
+                'book_id' => $review->book_id // 書籍IDを追加
             ]);
     }
 
@@ -128,6 +129,11 @@ class BookController extends Controller
         $post_content = $req->session()->get('post_content');
         $score = $req->session()->get('score');
         $book_id = $req->session()->get('book_id'); // 書籍IDを取得
+
+        // デバック用
+        if (!$book_id) {
+            abort(404, '書籍IDが見つかりません。');
+        }
 
         return view('review_complete', compact('name','post_content','score', 'book_id'));
     }

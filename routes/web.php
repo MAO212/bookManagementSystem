@@ -39,6 +39,3 @@ Route::post('/update', [BookController::class, 'update']);
 
 // レビュー削除
 Route::post('/delete', [BookController::class, 'destroy']);
-
-// バックする
-Route::get('/back', [BookController::class, 'back']);

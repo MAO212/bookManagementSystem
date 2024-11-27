@@ -18,7 +18,12 @@
         <td>{{$score}}</td>
     </tr>
     <br>
-    form
-    <a href="/index">一覧表示に戻る</a>
+    <form action="/detail" method="get">
+        <input type="hidden" name="id" value="{{$book_id}}">
+        <button type="submit" class="btn">詳細ページに戻る</button>
+    </form>
+    <form action="/index" method="get">
+        <button type="submit" class="btn">一覧表示に戻る</button>
+    </form>
 </body>
 </html>
