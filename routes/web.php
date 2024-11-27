@@ -36,3 +36,6 @@ Route::post('/edit', [BookController::class, 'edit']);
 Route::get('/edit', [BookController::class, 'edit']);
 
 Route::post('/update', [BookController::class, 'update']);
+
+// レビュー削除
+Route::post('/delete', [BookController::class, 'destroy']);

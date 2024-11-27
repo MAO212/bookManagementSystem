@@ -77,8 +77,8 @@
                     <img src="img/default_image.jpg" style="width:50px;height:auto">
                 @endif
             </td>
-            <td>{{ $record->review_count }}</td>
-            <td>{{ $record->avg_score }}</td>
+            <td>{{ $record->reviews_count }}</td>
+            <td>{{ number_format($record->reviews_avg_score, 1) }}</td>
         </tr>
     </table>
 
@@ -99,6 +99,7 @@
             <th>レビュー本文</th>
             <th>点数</th>
             <th>編集</th>
+            <th>削除</th>
         </tr>
         @foreach ($record->reviews as $review)
             <tr>
@@ -107,10 +108,19 @@
                 <td>{{ $review->score }}</td>
                 <td>
                     @if ($review->employee_id == $user->id)
-                    <form action="/edit" method="get">
+                    <form action="/edit" method="get" style="display:inline;">
                         <input type="hidden" name="id" value="{{ $review->id }}">
                         <button type="submit" class="btn">編集</button>
                     </form>
+                    @endif
+                </td>
+                <td>
+                    @if ($review->employee_id == $user->id)
+                        <form action="/delete" method="post" style="display:inline;" onsubmit="return confirm('本当にこのレビューを削除してもよろしいですか？');">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $review->id }}">
+                            <button type="submit" class="btn delete-btn">削除</button>
+                        </form>
                     @endif
                 </td>
             </tr>
