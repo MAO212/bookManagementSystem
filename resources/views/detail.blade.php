@@ -24,6 +24,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
+            background-color: white;
         }
         th {
             background-color: #f2f2f2;
@@ -47,6 +48,9 @@
     </style>
 </head>
 <body>
+    <form action="/index" method="get">
+        <input type="submit" value="一覧に戻る">
+    </form>
     <h1>書籍詳細ページ</h1>
 
     <h2>書籍情報</h2>
@@ -67,9 +71,15 @@
             <td>{{ $record->author }}</td>
             <td>{{ $record->publisher_name }}</td>
             <td>{{ $record->price }}</td>
-            <td><img src="{{ $record->img_link }}" alt="書籍画像" style="max-width: 100px;"></td>
-            <td>{{ $record->review_count }}</td>
-            <td>{{ $record->avg_score }}</td>
+            <td>
+                @if ($record->image_url)
+                    <img src="{{ $record->image_url }}"  style="width:50px;height:auto;">
+                @else
+                    <img src="img/default_image.jpg" style="width:50px;height:auto">
+                @endif
+            </td>
+            <td>{{ $record->reviews_count }}</td>
+            <td>{{ number_format($record->reviews_avg_score, 1) }}</td>
         </tr>
     </table>
 
@@ -89,13 +99,33 @@
             <th>レビュー者の名前</th>
             <th>レビュー本文</th>
             <th>点数</th>
+            <th>編集</th>
+            <th>削除</th>
         </tr>
         @foreach ($record->reviews as $review)
             <tr>
                 <td>{{ $review->employee->name ?? '不明' }}</td>
                 <td>{{ $review->post_content }}</td>
                 <td>{{ $review->score }}</td>
+                <td>
+                    @if ($review->employee_id == $user->id)
+                    <form action="/edit" method="get" style="display:inline;">
+                        <input type="hidden" name="id" value="{{ $review->id }}">
+                        <button type="submit" class="btn">編集</button>
+                    </form>
+                    @endif
+                </td>
+                <td>
+                    @if ($review->employee_id == $user->id)
+                        <form action="/delete" method="post" style="display:inline;" onsubmit="return confirm('本当にこのレビューを削除してもよろしいですか？');">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $review->id }}">
+                            <button type="submit" class="btn delete-btn">削除</button>
+                        </form>
+                    @endif
+                </td>
             </tr>
+            
         @endforeach
     </table>
 </body>

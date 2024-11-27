@@ -12,19 +12,23 @@
 
 </head>
 <body>
-    <h1>書籍管理システム</h1>
-    <h2>ログイン</h2>
-    <form action="/login" method="post">
-        @csrf
-        <div class="bm-3">
-        <label for="userId" class="form-label">ユーザID</label>
-        <input type="text" name="userId" id="userId" class="form-control" required>
+<div class="container">
+    <div class="welcome">
+      <div class="pinkbox">
+        <div class="signin">
+          <h1>sign in</h1>
+          <!-- 追加した画像 -->
+          <img class="signin-image" src="/img/bookCat.png" />
+          <form action="/login" method="post" class="more-padding" autocomplete="off">
+            @csrf
+            <input type="text" name="userId" placeholder="username">
+            <input type="password" name="password" placeholder="password">
+            <button class="button submit">ログイン</button>
+          </form>
         </div>
-        <div class="bm-3">
-            <label for="password" class="form-label">パスワード</label>
-            <input type="password" name="password" id="password" class="form-control" required>
-            </div>
-        <input type="submit" value="ログイン" class="btn btn-primary">
+      </div>
+    </div>
+  </div>
 
 
 

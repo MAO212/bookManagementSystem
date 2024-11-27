@@ -15,6 +15,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
+            background-color: white;
         }
         th {
             background-color: #f2f2f2;
@@ -34,7 +35,13 @@
     </style>
 </head>
 <body>
-    <a href="/logout">ログアウトする</a>
+    <form action="/top" method="get">
+        <input type="submit" value="Topページへ戻る">
+    </form>
+    <form action="/logout" method="get">
+        <input type="submit" value="ログアウトする">
+    </form>
+
     <h1>書籍一覧</h1>
 
     @if ($user = Session::get('user', 0))
@@ -64,13 +71,13 @@
                     <td>{{ $record->book_name }}</td>
                     <td>{{ $record->author }}</td>
                     <td>{{ $record->publisher_name }}</td>
-                    <td>{{ $record->review_count }}</td>
-                    <td>{{ $record->avg_score }}</td>
+                    <td>{{ $record->reviews_count }}</td>
+                    <td>{{ number_format($record->reviews_avg_score, 1) }}</td>
                     <td>
                         @if ($record->image_url)
                             <img src="{{ $record->image_url }}" alt="{{ $record->book_name }}の画像" style="width:50px;height:auto;">
                         @else
-                            画像なし
+                            <img src="img/default_image.jpg" style="width:50px;height:auto">
                         @endif
                     </td>
                     <td>

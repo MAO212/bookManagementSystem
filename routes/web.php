@@ -41,3 +41,13 @@ Route::post('/book_register', [BookController::class, 'register'])->name('book.r
 Route::get('/book_complete', function () {
     return view('book_complete'); // book_completeビューを作成する必要があります
 })->name('book.complete');
+Route::post('/book_store', [BookController::class, 'book_store']);
+
+Route::post('/edit', [BookController::class, 'edit']);
+
+Route::get('/edit', [BookController::class, 'edit']);
+
+Route::post('/update', [BookController::class, 'update']);
+
+// レビュー削除
+Route::post('/delete', [BookController::class, 'destroy']);

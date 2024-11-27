@@ -14,6 +14,47 @@
     <p>書籍が正常に登録されました。</p>
     <form action="/" method="post">
         <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
+
+    <form action="/logout" method="post">
+        @csrf
+        <input type="submit" value="ログアウト">
+    </form>
+
+    <h1>以下のデータを登録しました</h1>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>書籍名</th>
+                <th>著者名</th>
+                <th>出版社名</th>
+                <th>価格</th>
+                <th>書影</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ $ISBM }}</td>
+                <td>{{ $book_name }}</td>
+                <td>{{ $author }}</td>
+                <td>{{ $publisher_name }}</td>
+                <td>{{ $price }}</td>
+                <td>
+                @if ($img_link)
+                    <td><img src="{{ asset($img_link) }}" style="max-height: 150px;"></td>
+                @else
+                    <img src="img/default_image.jpg" style="width:50px;height:auto">
+                @endif
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <form action="/top" method="get">
+        <input type="submit" value="Topページへ戻る">
     </form>
 </body>
 </html>

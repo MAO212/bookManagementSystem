@@ -18,7 +18,7 @@
             <textarea name="post_content" id="post_content" rows="3" required></textarea>
         </div>
             <p>点数</p>
-                <input type="radio" name="reviewScore" value="1">☆1
+                <input type="radio" name="reviewScore" value="1" checked>☆1
                 <input type="radio" name="reviewScore" value="2">☆2
                 <input type="radio" name="reviewScore" value="3">☆3
                 <input type="radio" name="reviewScore" value="4">☆4

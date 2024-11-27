@@ -58,5 +58,24 @@
             <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
         </form>
     </div>
+    <form action="/logout" method="post">
+        <input type="submit" value="ログアウト">
+    </form>
+    
+    <h1>書籍登録ページ</h1>
+    
+    <form action="/book_store" method="post">
+        @csrf        
+        ISBN <input type="text" name="ISBM"><br>
+        書籍名 <input type="text" name="book_name" required><br>
+        著者名 <input type="text" name="author" required><br>
+        出版社名 <input type="text" name="publisher_name" required><br>
+        価格 <input type="number" name="price" required><br>
+        <input type="submit" value="登録">
+    </form>
+
+    <form action="/top" method="get">
+        <input type="submit" value="Topページへ戻る">
+    </form>
 </body>
 </html>
