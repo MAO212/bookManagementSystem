@@ -25,7 +25,7 @@
             <td>{{$author}}</td>
             <td>{{$publisher_name}}</td>
             <td>{{$price}}</td>
-            <img src="{{ assset($img_link) }}" alt="書影">
+            <img src="{{ asset($img_link) }}" alt="書影">
         </tr>
     </table>
     <br>
