@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 class IsbnSinController extends Controller
 {
     //
-    
+
     public function searchBook(Request $request)
     {
         
-            // ISBNを取得
             $isbn = $request->input('ISBN');
             $response = Http::get("https://api.openbd.jp/v1/get?isbn={$isbn}");
             $bookInfo = $response->json();
