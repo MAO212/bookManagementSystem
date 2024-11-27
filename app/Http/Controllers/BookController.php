@@ -53,7 +53,7 @@ class BookController extends Controller
     public function detail(Request $req) 
     {
         $bookId = $req->input('id');
-        $record = Book::find($bookId); // IDに基づいて書籍を取得
+        $record = Book::withCount('reviews')->withAvg('reviews','score')->findOrFail($bookId);
         $reviews = Book::with('reviews.employee')->find($bookId);
         
         // 書籍が見つからない場合は404エラーを返す
@@ -127,8 +127,9 @@ class BookController extends Controller
         $name = $req->session()->get('name');
         $post_content = $req->session()->get('post_content');
         $score = $req->session()->get('score');
+        $book_id = $req->session()->get('book_id'); // 書籍IDを取得
 
-        return view('review_complete', compact('name','post_content','score'));
+        return view('review_complete', compact('name','post_content','score', 'book_id'));
     }
 
     public function book_register()
@@ -144,6 +145,7 @@ class BookController extends Controller
         $book->author = $req['author'];
         $book->publisher_name = $req['publisher_name'];
         $book->price = $req['price'];
+        
 
         $book->save();
 
@@ -207,14 +209,35 @@ class BookController extends Controller
         // モデルのデータをテーブルに保存（上書き）
         $review->save();
 
+        // 書籍IDを取得
+        $bookId = $review->book_id;
+
         $data = [
             'post_content' => $req['post_content'],
             'score' => $req['score'],
-            'name' => Session::get('user')->name
+            'name' => Session::get('user')->name,
+            'book_id' => $bookId //書籍IDを追加
         ];
 
 
         // 更新完了後のメッセージやリダイレクト先を指定
         return view('review_update_complete', $data);
     }
+
+    // レビュー削除のメソッド
+    public function destroy(Request $req) 
+    {
+        // 指定されたIDのレビューを取得
+        $review = Review::findOrFail($req->id);
+
+        // レビューを削除
+        $review->delete();
+
+        // 成功メッセージをセッションに保存
+        Session::flash('success', 'レビューが削除されました');
+
+        // リダイレクトする場所を指定
+        return redirect()->back();
+    }
+
 }
