@@ -43,9 +43,9 @@
 <body class="page-center">
     <header class="py-3">
         <div class="container">
-            <nav class="d-flex justify-content-between">
-                <a href="/" class="btn btn-link">ログアウト</a>
-            </nav>
+        <form action="/logout" method="get">
+        <input type="submit" value="ログアウト">
+        </form>
         </div>
     </header>
 
@@ -70,7 +70,7 @@
                     <tr>
                         <td>{{ $name }}</td>
                         <td>{{ $post_content }}</td>
-                        <td>{{ $score }}</td>
+                        <td>☆{{ $score }}</td>
                     </tr>
                 </tbody>
             </table>

@@ -71,7 +71,7 @@
                     <tr>
                         <td>{{ $name }}</td>
                         <td>{{ $post_content }}</td>
-                        <td>{{ $score }}</td>
+                        <td>☆{{ $score }}</td>
                     </tr>
                 </tbody>
             </table>

@@ -18,6 +18,7 @@
     <form action="/logout">
         <input type="submit" class="btn btn-primary" value="ログアウト">
     </form>
+    <br>
     <div class="fukidashi-01-08">
         <div>レビューの新規登録</div>
     </div>
