@@ -133,4 +133,26 @@ class BookController extends Controller
     {
         return view('book_register');
     }
+
+    public function book_store(Request $req)
+    {
+        $book = new Book();
+        $book->ISBM = $req['ISBM'] ?? null; // ISBNが指定されていない場合はnullに設定
+        $book->book_name = $req['book_name'];
+        $book->author = $req['author'];
+        $book->publisher_name = $req['publisher_name'];
+        $book->price = $req['price'];
+
+        $book->save();
+
+        $data = [
+            'ISBM' => $req->ISBM,
+            'book_name' => $req->book_name,
+            'author' => $req->author,
+            'publisher_name' => $req->publisher_name,
+            'price' => $req->price
+        ];
+
+        return view('book_complete', $data); // book_complete　ビューにリダイレクト
+    }
 }

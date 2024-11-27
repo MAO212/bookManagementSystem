@@ -17,9 +17,9 @@
     
     <h1>書籍登録ページ</h1>
     
-    <form action="/book_register" method="post">
+    <form action="/book_store" method="post">
         @csrf        
-        ISBN <input type="number" name="ISBM"><br>
+        ISBN <input type="text" name="ISBM"><br>
         書籍名 <input type="text" name="book_name" required><br>
         著者名 <input type="text" name="author" required><br>
         出版社名 <input type="text" name="publisher_name" required><br>
