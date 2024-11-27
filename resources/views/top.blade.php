@@ -8,7 +8,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
+    <script src="https://kit.fontawesome.com/7c1b9b8fec.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,13 +57,14 @@
     </div>
         <br>
         <br>
-        <a href="/book_register" class="btn btn-custom" style="font-size: 18px;">書籍登録</a>
+        <a href="/book_register" class="btn btn-custom" style="font-size: 18px;"><i class="fa-solid fa-magnifying-glass"></i>　書籍登録</a>
         <br>
-        <a href="/index" class="btn btn-custom" style="font-size: 17px;">書籍の一覧表示</a>
+        <a href="/index" class="btn btn-custom" style="font-size: 17px;"><i class="fa-solid fa-book"></i>　書籍の一覧表示</a>
         <br>
         <br>
         <br>
-        <a href="/logout" class="btn btn-logout">ログアウト</a>
+
+        <a href="/logout" class="btn btn-logout"><i class="fa-solid fa-right-from-bracket"></i>　ログアウト</a>
 
         <!-- 画面右下に画像を表示 -->
         <img src="{{ asset('img/azarashi.png') }}" alt="あざらし画像" class="bottom-right-img">   

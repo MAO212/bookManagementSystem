@@ -47,6 +47,15 @@
             font-size: 2rem;
             text-align: center;
         }
+
+        .bookInfo {
+            font-size: 1.3rem;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            font-family: "メイリオ"		;
+        }
     </style>
 </head>
 <body>
@@ -91,14 +100,14 @@
         @else
             @foreach ($books as $record)
                 <tr>
-                    <td>{{ $record->book_name }}</td>
-                    <td>{{ $record->author }}</td>
-                    <td>{{ $record->publisher_name }}</td>
-                    <td>{{ $record->reviews_count }}　件</td>
-                    <td>☆{{ number_format($record->reviews_avg_score, 1) }}</td>
+                    <td class="bookInfo title">{{ $record->book_name }}</td>
+                    <td class="bookInfo">{{ $record->author }}</td>
+                    <td class="bookInfo">{{ $record->publisher_name }}</td>
+                    <td class="bookInfo">{{ $record->reviews_count }}　件</td>
+                    <td class="bookInfo">☆{{ number_format($record->reviews_avg_score, 1) }}</td>
                     <td>
                         @if ($record->img_link)
-                            <img src="{{ $record->img_link }}" alt="{{ $record->book_name }}の画像" style="width:50px;height:auto;">
+                            <img src="{{ $record->img_link }}" alt="{{ $record->book_name }}の画像" style="width:200px;height:auto;">
                         @else
                             <img src="img/default_image.jpg" style="width:50px;height:auto">
                         @endif
