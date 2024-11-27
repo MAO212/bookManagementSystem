@@ -43,7 +43,7 @@
         right: 475px;
         width: 500px; /* 画像の幅 */
         height: auto; /* アスペクト比を維持 */
-        z-index: 1000; /* 他の要素より前面に表示 */
+        z-index: -1; /* ボタンの下のレイヤに配置 */
         }
     </style>
 </head>
@@ -65,6 +65,6 @@
         <a href="/logout" class="btn btn-logout">ログアウト</a>
 
         <!-- 画面右下に画像を表示 -->
-        <img src="{{ asset('img/azarashi.png') }}" alt="サンプル画像" class="bottom-right-img">     
+        <img src="{{ asset('img/azarashi.png') }}" alt="あざらし画像" class="bottom-right-img">     
 </body>
 </html>
