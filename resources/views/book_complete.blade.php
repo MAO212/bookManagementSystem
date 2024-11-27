@@ -10,40 +10,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form action="/logout" method="post">
-        @csrf
-        <input type="submit" value="ログアウト">
-    </form>
-
-    <h1>以下のデータを登録しました</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ISBN</th>
-                <th>書籍名</th>
-                <th>著者名</th>
-                <th>出版社名</th>
-                <th>価格</th>
-                <th>書影</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ $ISBM }}</td>
-                <td>{{ $book_name }}</td>
-                <td>{{ $author }}</td>
-                <td>{{ $publisher_name }}</td>
-                <td>{{ $price }}</td>
-                <td><img src="{{ asset($img_link) }}" alt="書影" style="max-height: 150px;"></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <br>
-    <form action="/list" method="post">
-        @csrf
-        <input type="submit" value="Topページへ戻る">
+<h1>書籍登録完了</h1>
+    <p>書籍が正常に登録されました。</p>
+    <form action="/" method="post">
+        <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
     </form>
 </body>
 </html>
