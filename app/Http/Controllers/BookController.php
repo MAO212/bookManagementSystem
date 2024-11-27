@@ -150,7 +150,8 @@ class BookController extends Controller
             'book_name' => $req->book_name,
             'author' => $req->author,
             'publisher_name' => $req->publisher_name,
-            'price' => $req->price
+            'price' => $req->price,
+            'img_link' => 'img/default_image.jpg'
         ];
 
         return view('book_complete', $data); // book_complete　ビューにリダイレクト

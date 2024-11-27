@@ -27,7 +27,7 @@
         <input type="submit" value="登録">
     </form>
 
-    <form action="/" method="post">
+    <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る">
     </form>
 </body>

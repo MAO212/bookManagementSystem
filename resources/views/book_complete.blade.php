@@ -29,7 +29,7 @@
         </tr>
     </table>
     <br>
-    <form action="/list" method="post">
+    <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る">
     </form>
 </body>
