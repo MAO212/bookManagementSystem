@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class IsbnSinController extends Controller
 {
     //
+    
     public function searchBook(Request $request)
     {
         
