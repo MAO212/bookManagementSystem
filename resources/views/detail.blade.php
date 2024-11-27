@@ -67,7 +67,13 @@
             <td>{{ $record->author }}</td>
             <td>{{ $record->publisher_name }}</td>
             <td>{{ $record->price }}</td>
-            <td><img src="{{ $record->img_link }}" alt="書籍画像" style="max-width: 100px;"></td>
+            <td>
+                @if ($record->image_url)
+                    <img src="{{ $record->image_url }}"  style="width:50px;height:auto;">
+                @else
+                    <img src="img/default_image.jpg" style="width:50px;height:auto">
+                @endif
+            </td>
             <td>{{ $record->review_count }}</td>
             <td>{{ $record->avg_score }}</td>
         </tr>
