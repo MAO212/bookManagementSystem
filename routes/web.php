@@ -31,13 +31,14 @@ Route::get('/book_register', function() {
     return view('book_register');
 });
 
+// Route::get('/search_book', [BookController::class, 'registerBook']);
 
 //山岸
 // 書籍検索
 Route::post('/search_book', [IsbnSinController::class, 'searchBook'])->name('search.book');
 
 // 書籍登録
-Route::post('/register', [BookController::class, 'register']);
+Route::post('/register', [BookController::class, 'registerBook'])->name('register');
 
 // 書籍登録完了ページ
 Route::get('/book_complete', function () {
