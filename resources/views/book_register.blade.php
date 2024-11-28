@@ -12,7 +12,7 @@
         <h1>書籍登録</h1>
 
         <!-- ISBN入力フォーム -->
-        <form action="{{ route('search.book') }}" method="post" class="mb-4">
+        <form action="/search_book" method="post" class="mb-4">
             @csrf
             <div class="mb-3">
                 <label for="isbn" class="form-label">ISBNを入力してください:</label>
@@ -41,7 +41,10 @@
                 @endif
             </p>
 
-            <form action="book_register" method="post">
+
+
+            
+            <form action="/register" method="post">
                 @csrf
                 <input type="hidden" name="ISBN" value="{{ $bookData['industryIdentifiers'][0]['identifier'] ?? '' }}">
                 <input type="hidden" name="book_name" value="{{ $bookData['title'] }}">
@@ -58,21 +61,21 @@
             <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
         </form>
     </div>
-    <form action="/logout" method="post">
+    <form action="/logout" method="get">
         <input type="submit" value="ログアウト">
     </form>
     
-    <h1>書籍登録ページ</h1>
+    {{-- <h1>書籍登録ページ</h1>
     
-    <form action="/book_store" method="post">
+    <form action="/book_register" method="post">
         @csrf        
         ISBN <input type="text" name="ISBM"><br>
         書籍名 <input type="text" name="book_name" required><br>
         著者名 <input type="text" name="author" required><br>
         出版社名 <input type="text" name="publisher_name" required><br>
-        価格 <input type="number" name="price" required><br>
+        価格 <input type="number" name="price" ><br>
         <input type="submit" value="登録">
-    </form>
+    </form> --}}
 
     {{-- <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る">
