@@ -61,7 +61,7 @@ class IsbnSinController extends Controller
             }
         }
 
-        return view('book_register', compact('bookData', 'error'));
+        return view('result_search', compact('bookData', 'error'));
     }
 
     private function getBookPriceFromGoogleBooks($isbn)

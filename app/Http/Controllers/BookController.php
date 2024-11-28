@@ -134,33 +134,33 @@ class BookController extends Controller
         return view('review_complete', compact('name','post_content','score', 'book_id'));
     }
 
-    public function book_register()
-    {
-        return view('book_register');
-    }
-
-    public function register(Request $request)
+    public function registerBook(Request $request)
     {
         // バリデーションを追加
-        $validated = $request->validate([
-            'ISBN' => 'required|string|unique:books,ISBM',
-            'book_name' => 'required|string',
-            'author' => 'required|string',
-            'publisher_name' => 'required|string',
-            'price' => 'nullable|numeric',
-        ]);
+
+        $book_data = new Book();
+
+        // $data = $request->validate([
+        //     'isbn' => 'required|digits:13',
+        //     'book_name' => 'required|string|max:255',
+        //     'author' => 'nullable|string|max:255',
+        //     'publisher_name' => 'nullable|string|max:255',
+        //     'price' => 'nullable|numeric',
+        // ]);
+
+        $book_data->isbn = $request->isbn;
+        $book_data->book_name = $request->book_name;
+        $book_data->author = $request->author;
+        $book_data->publisher_name = $request->publisher_name;
+        $book_data->price = $request->price;
+
+
+
 
         // データを保存
-        Book::create([
-            'ISBM' => $validated['ISBN'],
-            'book_name' => $validated['book_name'],
-            'author' => $validated['author'],
-            'publisher_name' => $validated['publisher_name'],
-            'price' => $validated['price'] ?? 0,
-            'img_link' => 'img/default_image.jpg', // 画像がある場合は適宜修正
-        ]);
+        $book_data->save(); // 画像がある場合は適宜修正
 
-        return redirect()->route('book.complete'); // 登録完了ページへリダイレクト
+        return view('top'); // 登録完了ページへリダイレクト
     }
 
     // レビュー削除のメソッド

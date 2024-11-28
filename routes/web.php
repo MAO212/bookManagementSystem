@@ -27,20 +27,26 @@ Route::post('/store', [BookController::class, 'store'])->name('reviews.store');
 
 Route::get('/review_complete', [BookController::class, 'review_complete'])->name('reviews.complete');
 
-Route::get('/book_register', [BookController::class, 'book_register']);
+Route::get('/book_register', function() {
+    return view('book_register');
+});
 
+Route::get('/search_book', function() {
+    return view('top');
+});
 
 //山岸
 // 書籍検索
-Route::post('/search_book', [IsbnSinController::class, 'searchBook'])->name('search.book');
+Route::post('/search_book', [IsbnSinController::class, 'searchBook']);
 
 // 書籍登録
-Route::post('/book_register', [BookController::class, 'register']);
+Route::post('/register', [BookController::class, 'registerBook']);
 
 // 書籍登録完了ページ
 Route::get('/book_complete', function () {
     return view('book_complete'); // book_completeビューを作成する必要があります
 })->name('book.complete');
+
 Route::post('/book_store', [BookController::class, 'book_store']);
 
 Route::post('/edit', [BookController::class, 'edit']);
