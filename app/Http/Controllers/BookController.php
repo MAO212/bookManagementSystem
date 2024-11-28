@@ -136,8 +136,6 @@ class BookController extends Controller
 
     public function registerBook(Request $request)
     {
-        // バリデーションを追加
-
         $book_data = new Book();
 
         // $data = $request->validate([
@@ -158,7 +156,15 @@ class BookController extends Controller
         // dd($book_data);
 
         // データを保存
-        $book_data->save(); // 画像がある場合は適宜修正
+        try {
+            // 新しい書籍を挿入
+            $book_data->save(); // 画像がある場合は適宜修正
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() == 23000) { // ユニーク制約違反
+                return view('book_register');
+            }
+            // その他のエラー処理
+        }
 
         return view('top'); // 登録完了ページへリダイレクト
     }

@@ -78,13 +78,13 @@
         <input type="submit" value="Topページへ戻る">
     </form> --}}
 
-        <form action="/top" method="get">
+        {{-- <form action="/top" method="get">
             <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
         </form>
     </div>
     <form action="/logout" method="get">
         <input type="submit" value="ログアウト">
-    </form>
+    </form> --}}
 
 </body>
 </html>
