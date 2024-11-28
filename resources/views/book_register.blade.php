@@ -73,10 +73,11 @@
     <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
     </form> --}}
-</div>
-    {{-- <form action="/top" method="get">
+    <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る">
-    </form> --}}
+    </form>
+</div>
+    
 
         {{-- <form action="/top" method="get">
             <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
