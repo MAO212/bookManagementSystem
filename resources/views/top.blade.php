@@ -9,7 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
-
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 60px;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
     @php
@@ -17,12 +23,12 @@
     @endphp
     <h1>ようこそ{{$user['name']}}さん</h1>
         <br>
-        <a href="/book_register">書籍登録</a>
+        <a href="/book_register" style="font-size: 20px;">書籍登録</a>
         <br>
-        <a href="/index">図書の一覧表示</a>
+        <a href="/index" style="font-size: 20px;">書籍の一覧表示</a>
         <br>
         <br>
         <br>
-        <a href="/logout">ログアウトする</a>
+        <a href="/logout">ログアウト</a>
 </body>
 </html>
