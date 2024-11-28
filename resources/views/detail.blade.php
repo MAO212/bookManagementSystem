@@ -71,7 +71,7 @@
             <td>{{ $record->book_name }}</td>
             <td>{{ $record->author }}</td>
             <td>{{ $record->publisher_name }}</td>
-            <td>{{ $record->price }}</td>
+            <td>￥{{ $record->price }}</td>
             <td>
                 @if ($record->image_url)
                     <img src="{{ $record->image_url }}"  style="width:50px;height:auto;">
@@ -79,8 +79,8 @@
                     <img src="img/default_image.jpg" style="width:50px;height:auto">
                 @endif
             </td>
-            <td>{{ $record->reviews_count }}</td>
-            <td>{{ number_format($record->reviews_avg_score, 1) }}</td>
+            <td>{{ $record->reviews_count }}　件</td>
+            <td>☆{{ number_format($record->reviews_avg_score, 1) }}</td>
         </tr>
     </table>
 
@@ -107,7 +107,7 @@
             <tr>
                 <td>{{ $review->employee->name ?? '不明' }}</td>
                 <td>{{ $review->post_content }}</td>
-                <td>{{ $review->score }}</td>
+                <td>☆{{ $review->score }}</td>
                 <td>
                     @if ($review->employee_id == $user->id)
                     <form action="/edit" method="get" style="display:inline;">

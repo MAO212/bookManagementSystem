@@ -77,8 +77,8 @@
                     <td>{{ $record->book_name }}</td>
                     <td>{{ $record->author }}</td>
                     <td>{{ $record->publisher_name }}</td>
-                    <td>{{ $record->reviews_count }}</td>
-                    <td>{{ number_format($record->reviews_avg_score, 1) }}</td>
+                    <td>{{ $record->reviews_count }}　件</td>
+                    <td>☆{{ number_format($record->reviews_avg_score, 1) }}</td>
                     <td>
                         @if ($record->image_url)
                             <img src="{{ $record->image_url }}" alt="{{ $record->book_name }}の画像" style="width:50px;height:auto;">
