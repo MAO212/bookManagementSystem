@@ -140,13 +140,13 @@ class BookController extends Controller
 
         $book_data = new Book();
 
-        $data = $request->validate([
-            'isbn' => 'required|digits:13',
-            'book_name' => 'required|string|max:255',
-            'author' => 'nullable|string|max:255',
-            'publisher_name' => 'nullable|string|max:255',
-            'price' => 'nullable|numeric',
-        ]);
+        // $data = $request->validate([
+        //     'isbn' => 'required|digits:13',
+        //     'book_name' => 'required|string|max:255',
+        //     'author' => 'nullable|string|max:255',
+        //     'publisher_name' => 'nullable|string|max:255',
+        //     'price' => 'nullable|numeric',
+        // ]);
 
         $book_data->isbn = $request->isbn;
         $book_data->book_name = $request->book_name;
@@ -160,7 +160,7 @@ class BookController extends Controller
         // データを保存
         $book_data->save(); // 画像がある場合は適宜修正
 
-        return redirect('/book_complete'); // 登録完了ページへリダイレクト
+        return view('top'); // 登録完了ページへリダイレクト
     }
 
     // レビュー削除のメソッド
