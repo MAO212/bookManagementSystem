@@ -23,14 +23,16 @@ class IsbnSinController extends Controller
         if (!empty($isbn)) {
             // OpenBD APIから書籍情報を取得
             $response = Http::get("https://api.openbd.jp/v1/get?isbn={$isbn}");
+            // dd($response);
             $bookInfo = $response->json();
-
+            // dd($bookInfo);
             if (!empty($bookInfo[0])) {
                 // 書籍情報を取得
                 $bookData = $bookInfo[0]['summary'];
                 // Google Books APIから価格を取得
-                $googlePrice = $this->getBookPriceFromGoogleBooks($isbn);
+                $googlePrice = $bookInfo[0]['onix']['ProductSupply']['SupplyDetail']['Price'][0]['PriceAmount'];
                 $bookData['price'] = $googlePrice;
+                $bookData['author'] = $bookInfo[0]['summary']['author'];
 
                 // ISBNを追加
                 $bookData['industryIdentifiers'] = [['identifier' => $isbn]];
