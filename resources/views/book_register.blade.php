@@ -59,7 +59,7 @@
             <p>書籍が見つかりませんでした。</p>
         @endif
             <hr>
-    <h1>書籍登録ページ</h1>
+    {{-- <h1>書籍登録ページ</h1>
     
     <form action="/book_store" method="post">
         @csrf        
@@ -72,7 +72,7 @@
     </form> <br>
     <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
-    </form>
+    </form> --}}
 </div>
     {{-- <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る">
