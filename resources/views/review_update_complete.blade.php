@@ -21,6 +21,6 @@
         <input type="hidden" name="id" value="{{$book_id}}">
         <button type="submit" class="btn">戻る</button>
     </form>
-    <a href="/index">一覧表示に戻る</a>
+    <a href="/index">書籍一覧に戻る</a>
 </body>
 </html>

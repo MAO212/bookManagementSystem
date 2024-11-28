@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/topBottom.css') }}"> <!-- CSSファイルをリンク -->
     <title>レビュー更新画面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 60px;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
     <h1>投稿済みレビューの更新</h1>
