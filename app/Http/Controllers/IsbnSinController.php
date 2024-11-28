@@ -76,7 +76,7 @@ class IsbnSinController extends Controller
         }
 
         return null;
-    }
+    
 
         
             $isbn = $request->input('ISBN');
@@ -90,5 +90,5 @@ class IsbnSinController extends Controller
             }
     
             return redirect()->back()->with('error', '書籍が見つかりませんでした。');
-        }
+    }
 }

@@ -24,7 +24,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.75);
         }
         th {
             background-color: #f2f2f2;
