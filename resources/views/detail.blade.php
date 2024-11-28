@@ -66,7 +66,8 @@
             <th>平均点</th>
         </tr>
         <tr>
-            <td>{{ $record->isbn }}</td>
+            {{dd($record);}}
+            <td>{{ $record->ISBN }}</td>
             <td>{{ $record->book_name }}</td>
             <td>{{ $record->author }}</td>
             <td>{{ $record->publisher_name }}</td>
