@@ -17,7 +17,7 @@ class BookController extends Controller
         }
         
         // データベースから書籍データを取得
-        $books = Book::all(); // 全ての書籍を取得
+        $books = Book::withCount('reviews')->withAvg('reviews', 'score')->get();
 
         // ビューにデータを渡す
         return view('index', ['books' => $books]);
@@ -53,7 +53,7 @@ class BookController extends Controller
     public function detail(Request $req) 
     {
         $bookId = $req->input('id');
-        $record = Book::find($bookId); // IDに基づいて書籍を取得
+        $record = Book::withCount('reviews')->withAvg('reviews','score')->findOrFail($bookId);
         $reviews = Book::with('reviews.employee')->find($bookId);
         
         // 書籍が見つからない場合は404エラーを返す
@@ -61,7 +61,10 @@ class BookController extends Controller
             abort(404);
         }
 
-        return view('detail', compact('record')); // 詳細ページにデータを渡す
+        // セッションからユーザ情報を取得
+        $user = Session::get('user');
+
+        return view('detail', compact('record', 'reviews', 'user')); // 詳細ページにデータを渡す
     }
 
     public function review_register(Request $req)
@@ -158,6 +161,21 @@ class BookController extends Controller
         return redirect()->route('book.complete'); // 登録完了ページへリダイレクト
     }
 
+    // レビュー削除のメソッド
+    public function destroy(Request $req) 
+    {
+        // 指定されたIDのレビューを取得
+        $review = Review::findOrFail($req->id);
+
+        // レビューを削除
+        $review->delete();
+
+        // 成功メッセージをセッションに保存
+        Session::flash('success', 'レビューが削除されました');
+
+        // リダイレクトする場所を指定
+        return redirect()->back();
+    }
 
 
 }
