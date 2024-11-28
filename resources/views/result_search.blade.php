@@ -7,13 +7,14 @@
     <title>Document</title>
 </head>
 <body>
+    {{-- {{dd($bookData);}} --}}
     @if(isset($bookData))
             <h2>書籍情報</h2>
             <p>ISBN: {{ $bookData['isbn'] }}</p>
             <p>書籍名: {{ $bookData['title'] }}</p>
             <p>著者名:
-                @if(isset($bookData['authors']))
-                    {{ implode(', ', $bookData['authors']) }}
+                @if(isset($bookData['author']))
+                     {{$bookData['author']}}
                 @else
                     不明
                 @endif
@@ -30,12 +31,12 @@
 
 
 
-            
+            {{-- {{ dd($bookData['author']);}} --}}
             <form action="/register" method="post">
                 @csrf
                 <input type="hidden" name="isbn" value="{{ $bookData['industryIdentifiers'][0]['identifier'] ?? '' }}">
                 <input type="hidden" name="book_name" value="{{ $bookData['title'] }}">
-                <input type="hidden" name="author" value="{{ isset($bookData['authors']) ? implode(', ', (array)$bookData['authors']) : '' }}">
+                <input type="hidden" name="author" value="{{ $bookData['author'] ?? '' }}">
                 <input type="hidden" name="publisher_name" value="{{ $bookData['publisher'] ?? '' }}">
                 <input type="hidden" name="price" value="{{ isset($bookData['price']) ? $bookData['price'] : '' }}">
                 <input type="submit" value="登録する" class="btn btn-primary">

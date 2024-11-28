@@ -155,7 +155,7 @@ class BookController extends Controller
         $book_data->price = $request->price;
 
 
-
+        // dd($book_data);
 
         // データを保存
         $book_data->save(); // 画像がある場合は適宜修正
