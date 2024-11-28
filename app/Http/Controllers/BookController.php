@@ -161,6 +161,21 @@ class BookController extends Controller
         return redirect()->route('book.complete'); // 登録完了ページへリダイレクト
     }
 
+    // レビュー削除のメソッド
+    public function destroy(Request $req) 
+    {
+        // 指定されたIDのレビューを取得
+        $review = Review::findOrFail($req->id);
+
+        // レビューを削除
+        $review->delete();
+
+        // 成功メッセージをセッションに保存
+        Session::flash('success', 'レビューが削除されました');
+
+        // リダイレクトする場所を指定
+        return redirect()->back();
+    }
 
 
 }
