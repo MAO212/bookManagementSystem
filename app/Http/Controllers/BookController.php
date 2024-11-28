@@ -179,5 +179,64 @@ class BookController extends Controller
         return redirect()->back();
     }
 
+    public function edit(Request $req)
+    {
+        // リクエスト時のmethodの種類を判別
+        if ($req->isMethod('get')) { // GET通信の場合
+            $id = $req->input('id'); // 修正対象データのIDを取得
+            $record = Review::find($id); // IDに基づいてレビューを取得
+
+            // レビューが見つからない場合は404エラーを返す
+            if (!$record) {
+                abort(404);
+            }
+
+            return view('review_update', compact('record')); // データを指定してビューを表示
+        } elseif ($req->isMethod('post')) { // POST通信の場合
+            $id = $req->input('id'); // 修正対象データのIDを取得
+
+            // IDに基づいてレビューを取得
+            $record = Review::find($id);
+
+            // レビューが見つからない場合は404エラーを返す
+            if (!$record) {
+                abort(404);
+            }
+
+            return view('review_update', compact('record')); // データを指定してビューを表示
+        } else { // GET/POST以外の場合
+            return redirect('/'); // Topページにリダイレクト
+        }
+    }
+
+    public function update(Request $req)
+    {
+        // 修正対象のIDに該当するレコードを取得
+        $review = Review::find($req->id);
+
+        // レビューが見つからない場合は404エラーを返す
+        if (!$review) {
+            abort(404);
+        }
+
+        // フォームに入力されているデータをモデルに代入（上書き）
+        $review->post_content = $req['post_content'];
+        $review->score = $req['score'];
+
+        // モデルのデータをテーブルに保存（上書き）
+        $review->save();
+
+        $data = [
+            'post_content' => $req['post_content'],
+            'score' => $req['score'],
+            'name' => Session::get('user')->name,
+            'book_id' => $req->session()->get('book_id') // 書籍IDを取得
+        ];
+
+
+        // 更新完了後のメッセージやリダイレクト先を指定
+        return view('review_update_complete', $data);
+    }
+
 
 }
