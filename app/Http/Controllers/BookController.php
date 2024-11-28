@@ -61,7 +61,10 @@ class BookController extends Controller
             abort(404);
         }
 
-        return view('detail', compact('record')); // 詳細ページにデータを渡す
+        // セッションからユーザ情報を取得
+        $user = Session::get('user');
+
+        return view('detail', compact('record', 'reviews', 'user')); // 詳細ページにデータを渡す
     }
 
     public function review_register(Request $req)
