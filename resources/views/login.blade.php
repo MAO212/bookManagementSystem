@@ -16,14 +16,14 @@
     <div class="welcome">
       <div class="pinkbox">
         <div class="signin">
-          <h1>sign in</h1>
+          <h2>Book Management System</h2>
           <!-- 追加した画像 -->
           <img class="signin-image" src="/img/bookCat.png" />
           <form action="/login" method="post" class="more-padding" autocomplete="off">
             @csrf
             <input type="text" name="userId" placeholder="username">
             <input type="password" name="password" placeholder="password">
-            <button class="button submit">ログイン</button>
+            <button class="button submit">login</button>
           </form>
         </div>
       </div>
