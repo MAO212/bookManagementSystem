@@ -17,7 +17,7 @@ class BookController extends Controller
         }
         
         // データベースから書籍データを取得
-        $books = Book::all(); // 全ての書籍を取得
+        $books = Book::withCount('reviews')->withAvg('reviews', 'score')->get();
 
         // ビューにデータを渡す
         return view('index', ['books' => $books]);
@@ -53,7 +53,7 @@ class BookController extends Controller
     public function detail(Request $req) 
     {
         $bookId = $req->input('id');
-        $record = Book::find($bookId); // IDに基づいて書籍を取得
+        $record = Book::withCount('reviews')->withAvg('reviews','score')->findOrFail($bookId);
         $reviews = Book::with('reviews.employee')->find($bookId);
         
         // 書籍が見つからない場合は404エラーを返す
