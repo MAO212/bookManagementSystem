@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #EBE3DA; /* 背景色を設定する */
+    background-color: #EBE3DA !important; /* 背景色を設定する */
 }
 body::before {
     content: '';
