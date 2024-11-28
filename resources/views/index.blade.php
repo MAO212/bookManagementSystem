@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="{{ asset('css/topBottom.css') }}"> <!-- CSSファイルをリンク -->
     <title>書籍一覧</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+
         }
         th, td {
             border: 1px solid #ddd;
