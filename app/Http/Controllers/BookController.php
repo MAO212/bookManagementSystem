@@ -230,7 +230,7 @@ class BookController extends Controller
             'post_content' => $req['post_content'],
             'score' => $req['score'],
             'name' => Session::get('user')->name,
-            'book_id' => $req->session()->get('book_id') // 書籍IDを取得
+            'book_id' => $review->book_id // 書籍IDを取得
         ];
 
 
