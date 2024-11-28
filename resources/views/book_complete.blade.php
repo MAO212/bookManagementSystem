@@ -12,9 +12,9 @@
 <body>
 <h1>書籍登録完了</h1>
     <p>書籍が正常に登録されました。</p>
-    <form action="/" method="post">
+    <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
-
+    </form>
     <form action="/logout" method="post">
         @csrf
         <input type="submit" value="ログアウト">
@@ -53,8 +53,8 @@
     </table>
 
     <br>
-    <form action="/top" method="get">
+    {{-- <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る">
-    </form>
+    </form> --}}
 </body>
 </html>

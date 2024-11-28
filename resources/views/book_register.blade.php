@@ -54,7 +54,7 @@
             <p>書籍が見つかりませんでした。</p>
         @endif
 
-        <form action="/" method="post">
+        <form action="/top" method="get">
             <input type="submit" value="Topページへ戻る" class="btn btn-secondary">
         </form>
     </div>
@@ -74,8 +74,8 @@
         <input type="submit" value="登録">
     </form>
 
-    <form action="/top" method="get">
+    {{-- <form action="/top" method="get">
         <input type="submit" value="Topページへ戻る">
-    </form>
+    </form> --}}
 </body>
 </html>
