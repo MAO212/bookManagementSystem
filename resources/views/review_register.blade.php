@@ -15,7 +15,9 @@
     </style>
 </head>
 <body>
-    <a href="/logout">ログアウト</a>
+    <form action="/logout">
+        <input type="submit" class="btn btn-primary" value="ログアウト">
+    </form>
     <div class="fukidashi-01-08">
         <div>レビューの新規登録</div>
     </div>
@@ -40,6 +42,8 @@
                 <br>
     </form>
     <br>
-    <a href="/index">書籍一覧に戻る</a>
+    <form action="/index">
+        <input type="submit" class="btn btn-primary" value="書籍一覧に戻る">
+    </form>
 </body>
 </html>
