@@ -235,9 +235,9 @@
             <p>No user found.</p>
         @endif
         <ul class="sidebarMenuInner">
-        <li><a href="/logout" target="_blank">ログアウトする</a></li>
+        <li><a href="/logout" >ログアウトする</a></li>
         <li>
-            <a href="/top" target="_blank">Topページに戻る</a>
+            <a href="/top" >Topページに戻る</a>
         </li>
         </ul>
     </div>
