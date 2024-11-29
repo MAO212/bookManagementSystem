@@ -23,6 +23,8 @@ class BookController extends Controller
         return view('index', ['books' => $books]);
     }
 
+    
+
     public function login(Request $req)
     {
         // フォームからの入力を取得
@@ -262,4 +264,12 @@ class BookController extends Controller
         return redirect()->back();
     }
 
+    public function book_register()
+    {
+        if (!session()->has('user')) {
+            return redirect('login');
+        }
+
+        return view('book_register');
+    }
 }
