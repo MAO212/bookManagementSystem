@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/topBottom.css') }}"> <!-- CSSファイルをリンク -->
+    <link rel="stylesheet" href="{{ asset('css/topBottom.css') }}">
     <title>書籍一覧</title>
     <style>
         body {
@@ -15,7 +15,6 @@
         table {
             width: 100%;
             border-collapse: collapse;
-
         }
         th, td {
             border: 1px solid #ddd;
@@ -38,6 +37,16 @@
         .btn:hover {
             background-color: #0056b3;
         }
+
+        .btn-delete { /* 削除ボタン用のクラス */
+            background-color: #dc3545; /* 赤色 */
+        }
+
+        .success-message {
+            color: red;
+            font-size: 2rem;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -47,11 +56,16 @@
     <form action="/logout" method="get">
         <input type="submit" value="ログアウトする">
     </form>
+
     <br>
     <div class="fukidashi-01-08">
         <div>書籍一覧</div>
     </div>
     <br>
+    @if (session('success'))
+        <div class="success-message">{{ session('success') }}</div>
+    @endif
+    
     @if ($user = Session::get('user', 0))
         <p>ID: {{ $user['id'] }}</p>
         <p>Name: {{ $user['name'] }}</p>
@@ -68,10 +82,11 @@
             <th scope="col">平均点</th>
             <th scope="col">画像</th>
             <th scope="col">詳細</th>
+            <th scope="col">削除</th> <!-- 削除列のヘッダー -->
         </tr>
         @if ($books->isEmpty())
             <tr>
-                <td colspan="7">書籍が見つかりませんでした。</td>
+                <td colspan="8">書籍が見つかりませんでした。</td>
             </tr>
         @else
             @foreach ($books as $record)
@@ -92,6 +107,13 @@
                         <form action="detail">
                             <input type="hidden" name="id" value="{{ $record->id }}">
                             <button type="submit" class="btn">詳細</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/book_delete" method="POST" style="display:inline;">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $record->id }}">
+                            <button type="submit" class="btn btn-delete" onclick="return confirm('本当に削除しますか？');">削除</button>
                         </form>
                     </td>
                 </tr>
