@@ -45,6 +45,9 @@
             color: green;
             margin-bottom: 20px;
         }
+        .delete-btn { /* 削除ボタン用のクラス */
+            background-color: #dc3545; /* 赤色 */
+        }
     </style>
 </head>
 <body>
