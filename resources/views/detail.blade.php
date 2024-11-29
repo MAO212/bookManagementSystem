@@ -52,8 +52,11 @@
     <form action="/index" method="get">
         <input type="submit" value="一覧に戻る">
     </form>
-    <h1>書籍詳細ページ</h1>
-
+    <br>
+    <div class="fukidashi-01-08">
+        <div>書籍詳細ページ</div>
+    </div>
+    <br>
     <h2>書籍情報</h2>
     <table>
         <tr>

@@ -14,7 +14,10 @@
     </style>
 </head>
 <body>
-    <h1>投稿済みレビューの更新</h1>
+    <div class="fukidashi-01-08">
+        <div>投稿済みレビューの更新</div>
+    </div>
+    <br>
     @if (isset($record))
     <form action="/update" method="post">
         @csrf
