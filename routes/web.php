@@ -12,6 +12,10 @@ Route::get('/top', [BookController::class, 'top']);
 
 Route::post('/login', [BookController::class, 'login']);
 
+Route::get('/login', function(){
+    return view('login');
+});
+
 Route::get('/index', [BookController::class, 'index']);
 
 
@@ -27,9 +31,7 @@ Route::post('/store', [BookController::class, 'store'])->name('reviews.store');
 
 Route::get('/review_complete', [BookController::class, 'review_complete'])->name('reviews.complete');
 
-Route::get('/book_register', function() {
-    return view('book_register');
-});
+Route::get('/book_register', [BookCOntroller::class, 'book_register']);
 
 Route::get('/search_book', function() {
     return view('top');
