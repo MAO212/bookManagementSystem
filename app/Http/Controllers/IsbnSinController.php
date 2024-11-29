@@ -35,7 +35,10 @@ class IsbnSinController extends Controller
                 $bookData['author'] = $bookInfo[0]['summary']['author'];
 
                 // ISBNを追加
-                $bookData['industryIdentifiers'] = [['identifier' => $isbn]];
+                $bookData['isbn'] = $bookInfo[0]['summary']['isbn'];
+
+                // 画像のリンクを追加
+                $bookData['img_link'] = "https://ndlsearch.ndl.go.jp/thumbnail/{$bookData['isbn']}.jpg";
             } else {
                 $error = '該当する書籍が見つかりませんでした。';
             }
@@ -63,6 +66,7 @@ class IsbnSinController extends Controller
             }
         }
 
+        // dd($bookData);
         return view('result_search', compact('bookData', 'error'));
     }
 

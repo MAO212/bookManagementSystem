@@ -56,6 +56,7 @@ class BookController extends Controller
         $record = Book::withCount('reviews')->withAvg('reviews','score')->findOrFail($bookId);
         $reviews = Book::with('reviews.employee')->find($bookId);
         
+        // dd($record);
         // 書籍が見つからない場合は404エラーを返す
         if (!$record) {
             abort(404);
@@ -151,6 +152,7 @@ class BookController extends Controller
         $book_data->author = $request->author;
         $book_data->publisher_name = $request->publisher_name;
         $book_data->price = $request->price;
+        $book_data->img_link = "https://ndlsearch.ndl.go.jp/thumbnail/$request->isbn.jpg";
 
 
         // dd($book_data);
