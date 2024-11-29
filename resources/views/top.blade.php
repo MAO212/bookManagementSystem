@@ -38,13 +38,14 @@
         }
         /* 画像を画面右下に配置するスタイル */
         .bottom-right-img {
-        position: fixed;
-        bottom: 190px;
-        right: 475px;
-        width: 500px; /* 画像の幅 */
-        height: auto; /* アスペクト比を維持 */
-        z-index: -1; /* ボタンの下のレイヤに配置 */
-        }
+    position: fixed;
+    bottom: 22%; /* 下から5%の位置に配置 */
+    right: 24%; /* 右から5%の位置に配置 */
+    width: 480px; /* 画像の幅 */
+    height: auto; /* アスペクト比を維持 */
+    z-index: -1; /* ボタンの下のレイヤに配置 */
+}
+
     </style>
 </head>
 <body class="page-center">
@@ -66,6 +67,6 @@
         <a href="/logout" class="btn btn-logout"><i class="fa-solid fa-right-from-bracket"></i>　ログアウト</a>
 
         <!-- 画面右下に画像を表示 -->
-        <img src="{{ asset('img/azarashi.png') }}" alt="あざらし画像" class="bottom-right-img">     
+        <img src="{{ asset('img/azarashi.png') }}" alt="あざらし画像" class="bottom-right-img">   
 </body>
 </html>
