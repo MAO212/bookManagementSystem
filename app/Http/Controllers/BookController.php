@@ -247,5 +247,19 @@ class BookController extends Controller
         return view('review_update_complete', $data);
     }
 
+    public function book_destroy(Request $req)
+    {
+        // 指定されたIDのレビューを取得
+        $book = Book::findOrFail($req->id);
+
+        // レビューを削除
+        $book->delete();
+
+        // 成功メッセージをセッションに保存
+        Session::flash('success', '書籍が削除されました');
+
+        // リダイレクトする場所を指定
+        return redirect()->back();
+    }
 
 }

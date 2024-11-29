@@ -57,3 +57,7 @@ Route::post('/update', [BookController::class, 'update']);
 
 // レビュー削除
 Route::post('/delete', [BookController::class, 'destroy']);
+
+
+// 書籍の削除
+Route::post('/book_delete', [BookController::class, 'book_destroy']);
