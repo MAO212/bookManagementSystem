@@ -19,6 +19,8 @@
             background-color: #EAC7CC;
             color: #333c5e;
             border: none;
+            border: 1px solid black; /* 枠線の色（黒） */
+
         }
         .btn-custom:hover {
             background-color: #E6B6B6;
@@ -32,6 +34,8 @@
             border: none;
             font-size: 14px; /* サイズを小さく */
             padding: 5px 10px; /* パディングを調整 */
+            border: 1px solid black; /* 枠線の色（黒） */
+
         }
         .btn-logout:hover {
             background-color: #ADCDEC;
