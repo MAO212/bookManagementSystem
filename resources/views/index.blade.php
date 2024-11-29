@@ -246,6 +246,7 @@
             <div>書籍一覧</div>
         </div>
         <br>
+        <br>
         @if (session('success'))
             <div class="success-message">{{ session('success') }}</div>
         @endif
