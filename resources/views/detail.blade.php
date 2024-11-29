@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/topBottom.css') }}"> <!-- CSSファイルをリンク -->
+    <script src="https://kit.fontawesome.com/7c1b9b8fec.js" crossorigin="anonymous"></script>
     <title>書籍詳細ページ</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Varela+Round');
@@ -229,11 +230,11 @@
             <p>No user found.</p>
         @endif
         <ul class="sidebarMenuInner">
-        <li><a href="/logout" >ログアウトする</a></li>
+        <li><a href="/logout" ><i class="fa-solid fa-right-from-bracket"></i>　ログアウトする</a></li>
         <li>
-            <a href="/top" >Topページに戻る</a>
+            <a href="/top" ><i class="fa-solid fa-house"></i>　Topページに戻る</a>
         </li>
-        <li><a href="/index">書籍一覧に戻る</a></li>
+        <li><a href="/index"><i class="fa-solid fa-book"></i>　書籍一覧に戻る</a></li>
         </ul>
     </div>
         {{-- {{dd($record);}} --}}
