@@ -48,6 +48,7 @@
     </style>
 </head>
 <body>
+    {{-- {{dd($record);}} --}}
     <form action="/index" method="get">
         <input type="submit" value="一覧に戻る">
     </form>
@@ -72,9 +73,11 @@
             <td>{{ $record->author }}</td>
             <td>{{ $record->publisher_name }}</td>
             <td>￥{{ $record->price }}</td>
+            {{-- {{dd($record->img_link)}} --}}
+
             <td>
-                @if ($record->image_url)
-                    <img src="{{ $record->image_url }}"  style="width:50px;height:auto;">
+                @if ($record->img_link)
+                    <img src="{{ $record->img_link }}"  style="width:50px;height:auto;">
                 @else
                     <img src="img/default_image.jpg" style="width:50px;height:auto">
                 @endif

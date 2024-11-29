@@ -52,8 +52,8 @@
             <p>出版社名: {{ $bookData['publisher'] ?? '不明' }}</p>
             <p>価格: ￥{{ isset($bookData['price']) ? $bookData['price'] : '不明' }}</p>
             <p>
-                @if(isset($bookData['imageLinks']['thumbnail']))
-                    <img src="{{ $bookData['imageLinks']['thumbnail'] }}" alt="書籍画像" style="max-width: 100px;">
+                @if(isset($bookData['img_link']))
+                    <img src="{{ $bookData['img_link'] }}" alt="書籍画像" style="max-width: 100px;">
                 @else
                     <p>画像はありません</p>
                 @endif
@@ -64,7 +64,7 @@
             {{-- {{ dd($bookData['author']);}} --}}
             <form action="/register" method="post">
                 @csrf
-                <input type="hidden" name="isbn" value="{{ $bookData['industryIdentifiers'][0]['identifier'] ?? '' }}">
+                <input type="hidden" name="isbn" value="{{ $bookData['isbn'] ?? '' }}">
                 <input type="hidden" name="book_name" value="{{ $bookData['title'] }}">
                 <input type="hidden" name="author" value="{{ $bookData['author'] ?? '' }}">
                 <input type="hidden" name="publisher_name" value="{{ $bookData['publisher'] ?? '' }}">
