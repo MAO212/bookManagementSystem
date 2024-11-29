@@ -24,6 +24,9 @@
             </div>
             <button type="submit" class="btn btn-primary">検索</button>
         </form>
+        @if (session('error_message'))
+            <div class="error-message">{{ session('error_message') }}</div>
+        @endif
 
 
         @if(isset($bookData))
