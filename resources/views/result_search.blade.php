@@ -57,7 +57,7 @@
             <p>価格: ￥{{ isset($bookData['price']) ? $bookData['price'] : '不明' }}</p>
             <p>
                 @if(isset($bookData['img_link']))
-                    <img src="{{ $bookData['img_link'] }}" alt="書籍画像" style="max-width: 100px;">
+                    <img src="{{ $bookData['img_link'] }}" alt="書籍画像" style="max-width: 250px;">
                 @else
                     <p>画像はありません</p>
                 @endif
