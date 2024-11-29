@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <form action="/logout" method="post">
+        <form action="/logout" method="get">
             <input type="submit" value="ログアウト">
         </form>
         <br>
