@@ -55,8 +55,6 @@
                 <input type="hidden" name="price" value="{{ isset($bookData['price']) ? $bookData['price'] : '' }}">
                 <input type="submit" value="登録する" class="btn btn-primary">
             </form>
-        @else
-            <p>書籍が見つかりませんでした。</p>
         @endif
             <hr>
     {{-- <h1>書籍登録ページ</h1>
