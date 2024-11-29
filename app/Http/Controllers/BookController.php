@@ -161,6 +161,7 @@ class BookController extends Controller
             $book_data->save(); // 画像がある場合は適宜修正
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() == 23000) { // ユニーク制約違反
+                Session::flash('error_message', '既に登録されています');
                 return view('book_register');
             }
             // その他のエラー処理
