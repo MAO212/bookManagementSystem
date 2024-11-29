@@ -16,7 +16,11 @@
 </head>
 <body>
     <a href="/logout">ログアウト</a>
-    <h1>レビューの新規登録</h1>
+    <div class="fukidashi-01-08">
+        <div>レビューの新規登録</div>
+    </div>
+    <br>
+    <br>
     <form action="/store" method="post">
         @csrf
         <td>タイトル「{{$book->book_name}}」</td><br>

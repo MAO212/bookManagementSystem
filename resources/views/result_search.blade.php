@@ -31,7 +31,7 @@
             padding: 5px 10px; /* パディングを調整 */
         }
         .btn-primary:hover {
-            background-color: #E6B6B6;
+            background-color: #ADCDEC;
         }
     </style>
 
@@ -39,7 +39,11 @@
 <body>
     {{-- {{dd($bookData);}} --}}
     @if(isset($bookData))
-            <h1>書籍情報</h1>
+        <div class="fukidashi-01-08">
+            <div>書籍情報</div>
+        </div>
+        <br>
+        <br>
             <p>ISBN: {{ $bookData['isbn'] }}</p>
             <p>書籍名: {{ $bookData['title'] }}</p>
             <p>著者名:
