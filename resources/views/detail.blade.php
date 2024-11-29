@@ -77,7 +77,7 @@
 
             <td>
                 @if ($record->img_link)
-                    <img src="{{ $record->img_link }}"  style="width:50px;height:auto;">
+                    <img src="{{ $record->img_link }}"  style="width:200px;height:auto;">
                 @else
                     <img src="img/default_image.jpg" style="width:50px;height:auto">
                 @endif
