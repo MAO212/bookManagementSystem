@@ -19,7 +19,7 @@
     <h1>レビューの新規登録</h1>
     <form action="/store" method="post">
         @csrf
-        <td>{{$book->book_name}}</td><br>
+        <td>タイトル「{{$book->book_name}}」</td><br>
         <div>
             <label for="post_content">レビュー本文</label>
             <textarea name="post_content" id="post_content" rows="3" required></textarea>
@@ -33,7 +33,7 @@
                 <br>
                 <input type="hidden" name="book_id" value="{{ $book->id }}"> <!-- 書籍IDを隠しフィールドで渡す -->
                 <input type="submit" value="登録">
-                
+                <br>
     </form>
     <br>
     <a href="/index">書籍一覧に戻る</a>
