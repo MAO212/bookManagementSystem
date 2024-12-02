@@ -296,6 +296,7 @@
                 <th>レビュー者の名前</th>
                 <th>レビュー本文</th>
                 <th>点数</th>
+                <th>投稿日</th>
                 <th>編集</th>
                 <th>削除</th>
             </tr>
@@ -304,6 +305,7 @@
                     <td>{{ $review->employee->name ?? '不明' }}</td>
                     <td>{{ $review->post_content }}</td>
                     <td>☆{{ $review->score }}</td>
+                    <td>{{ $review->created_at }}</td>
                     <td>
                         @if ($review->employee_id == $user->id)
                         <form action="/edit" method="get" style="display:inline;">
